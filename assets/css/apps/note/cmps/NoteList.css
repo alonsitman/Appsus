@@ -1,1 +1,23 @@
  /* note list */
+ 
+ 
+ .note-list .note-list-li{
+   position: relative;
+    border: 0.00525em solid black;
+    width: 15em;
+    list-style-type: none;
+    border-radius: 1em;
+ }
+ 
+
+
+
+ /* 18px  between row in ul. conver it to em  width gap...*/
+ /* 100px  between row in ul. convert it to em height gap...*/
+ /* 70 height from a search bar that will be */
+
+ /* search bar will be 30 px in height from header... to remember */
+
+ /* width of every li alway 240px! convert it to em*/
+
+ 
