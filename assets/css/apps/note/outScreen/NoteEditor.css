@@ -1,0 +1,50 @@
+/* position */
+.note-editor{
+    position: fixed;
+    top: 5.53%; 
+    bottom: 4.47%; 
+    left: 27.31%; 
+    right: 27.31%; 
+    width: 46.15%; 
+    height: 89.47%; 
+    z-index: 4001;
+    border-radius: 2em;
+}
+
+/* style */
+.note-editor{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background-color: white;
+}
+
+/* measurement */
+.note-editor{
+    padding: 16px;
+}
+
+
+
+/* MEDIA QUERY FOR SIZE */
+@media (max-width: 1000px) {
+    .note-editor {
+        width: 80%; 
+        left: 10%; 
+        right: 10%; 
+    }
+}
+
+@media (max-width: 800px) {
+    .note-editor{
+        width: 90%; 
+        left: 5%; 
+        right: 5%; 
+    }
+}
+
+@media (max-width: 600px) {
+    .note-editor {
+        width: 95%; 
+        left: 2.5%; 
+        right: 2.5%; 
+    }
+}

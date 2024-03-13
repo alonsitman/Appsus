@@ -1,10 +1,18 @@
  /* note list */
- 
+ .note-list{
+  columns: 15em;
+  margin-right:2em ;
+ }
+ .note-list > * {
+  break-inside: avoid;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
  
  .note-list .note-list-li{
    position: relative;
-    border: 0.00525em solid black;
-    width: 15em;
+    border: 0.05em solid black;
+    width: 100%;
     list-style-type: none;
     border-radius: 1em;
  }
