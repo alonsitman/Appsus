@@ -24,15 +24,14 @@
     position: absolute;
     top: 0;
     left: 0;
-    transform: translate(-50%, -50%);
-
+    transform: translate(-40%, -40%);
 }
 
 .note-preview .pin-note-btn{
     position: absolute;
     top: 0;
     right: 0;
-    transform: translate(-50%, 50%);
+    transform: translate(-25%, 25%);
 }
 
 
