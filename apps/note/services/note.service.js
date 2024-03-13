@@ -3,7 +3,6 @@ import { storageService } from '../../../services/async-storage.service.js'
 
 const NOTE_KEY = 'noteDB'
 
-console.log('hi i ma note servisadasd')
 //For debug ONLY
 _createNotes()
 
