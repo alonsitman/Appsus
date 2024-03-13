@@ -3,7 +3,7 @@ import { storageService } from '../../../services/async-storage.service.js'
 
 const NOTE_KEY = 'noteDB'
 
-console.log('hi i ma note servisadasd')
+
 //For debug ONLY
 _createNotes()
 
@@ -63,7 +63,6 @@ function _createNote() {
     note.id = utilService.makeId()
     note.info.title = utilService.makeLorem(utilService.getRandomIntInclusive(1,4))
     note.info.txt = utilService.makeLorem(utilService.getRandomIntInclusive(5,15))
-    console.log('creating note',note)
     return note
 }
 
@@ -72,9 +71,7 @@ function _createNotes(){
     if(!notes || !notes.length){
         notes = []
         for(var i = 0; i <= 10; i++){
-            console.log('asdasdasdd',_createNote())
             notes.push(_createNote())
-            console.log('note after creation',notes[i])
         }
     }
     utilService.saveToStorage(NOTE_KEY, notes)
