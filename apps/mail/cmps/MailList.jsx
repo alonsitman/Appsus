@@ -21,11 +21,11 @@ export function MailList({mails, onRemoveMail}) {
         setSelectedMail(null)
     }
 
-    return <div>
+    return <div className="mail-list">
         {selectedMail ? 
             <MailDetails mail={selectedMail} /> : (<div>
         <pre>Unread: {unreadCount}</pre>
-        <ul className="mail-list">
+        <ul>
             {
                 mails.map(mail => <li key={mail.id} >
                     <MailPreview mail={mail} onClick={ () => handleMailClick(mail.id)}/>
