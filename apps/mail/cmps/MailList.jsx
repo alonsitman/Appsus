@@ -20,8 +20,8 @@ export function MailList({mails, onRemoveMail}) {
     }
 
     return (<div>
-        {selectedMail ? (
-            <MailDetails mail={selectedMail} />) : (<div>
+        {selectedMail ? 
+            <MailDetails mail={selectedMail} /> : (<div>
         <pre>Unread: {unreadCount}</pre>
         <ul className="mail-list">
             {
@@ -35,6 +35,7 @@ export function MailList({mails, onRemoveMail}) {
 
         </ul>
         </div>)}
+        
         {selectedMail && (
             <button onClick={handleCloseMailDetails}>Close</button>
         )}

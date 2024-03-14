@@ -35,13 +35,12 @@ export function MailIndex() {
 
     if (!mails) return <div>Loading...</div>
     return <section className="mail-index">
-        <h1>mail app</h1>
+        <MailCompose />        
         <MailList
             mails={mails}
             onRemoveMail={onRemoveMail}
         />
 
-        <MailCompose />
      
     </section>
 }
