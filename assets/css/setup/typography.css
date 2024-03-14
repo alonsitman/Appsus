@@ -1,0 +1,56 @@
+/* regular whiter
+<i class="fa-regular fa-image"></i>           IMG
+<i class="fa-regular fa-folder"></i>         ARCHIVE
+<i class="fa-regular fa-copy"></i>          DUPLICATE
+<i class="fa-solid fa-palette"></i>          COLOR 
+<i class="fa-solid fa-thumbtack"></i>     thumbtack
+<i class="fa-regular fa-circle-check"></i> select 
+<i class="fa-solid fa-circle-check"></i> unselect
+
+
+
+/* FONTS */
+/* ------------------------------------------------ */
+
+/* FONT AWSOME */
+/* Trash icon */
+.trashIcon::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f2ed"; /* Unicode for the trash icon */
+    font-weight: regular;
+}
+
+/* Image icon  */
+.imageIcon::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f03e"; /* Unicode for the trash icon */
+    font-weight: regular;
+}
+
+/* Archive icon */
+.archiveIcon::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f07b";
+    font-weight: regular;
+}
+
+/* Duplicate icon */
+.duplicateIcon::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f0c5"; 
+    font-weight: regular;
+}
+
+/* Thumbtack icon */
+.thumbtackIcon::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f08d"; 
+    font-weight: solid;
+}
+
+/* select icon */
+.selectIcon::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f058"; 
+    font-weight: solid;
+}

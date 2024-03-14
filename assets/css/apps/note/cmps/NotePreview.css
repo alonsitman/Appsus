@@ -1,0 +1,41 @@
+*{
+    box-sizing: border-box;
+}
+.note-preview{
+    position: relative;
+    text-align:left;
+}
+
+.note-preview .header{
+    color: #202124;
+    font-size: 1rem;
+    padding: 12px 16px 0px;
+}
+
+
+.note-preview .main{
+    color: #202124;
+    font-size: 0.875rem;
+    padding: 12px 16px;
+}
+
+
+.note-preview .outerBtns{
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-40%, -40%);
+}
+
+.note-preview .pin-note-btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-25%, 25%);
+}
+
+
+
+
+
+

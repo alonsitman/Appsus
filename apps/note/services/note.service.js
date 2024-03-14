@@ -60,21 +60,21 @@ function getEmptyNote() {
 function _createNote() {
     const note = getEmptyNote()
     note.id = utilService.makeId()
-    note.info.title = utilService.makeLorem(utilService.getRandomIntInclusive(1,4))
-    note.info.txt = utilService.makeLorem(utilService.getRandomIntInclusive(5,15))
-    console.log('creating note',note)
+    note.info.title = utilService.makeLorem(utilService.getRandomIntInclusive(1, 4))
+    note.info.txt = utilService.makeLorem(utilService.getRandomIntInclusive(5, 15))
     return note
 }
 
-function _createNotes(){
+function _createNotes() {
     let notes = utilService.loadFromStorage(NOTE_KEY)
-    if(!notes || !notes.length){
+    if (!notes || !notes.length) {
         notes = []
-        for(var i = 0; i <= 10; i++){
-            console.log('asdasdasdd',_createNote())
+        for (var i = 0; i <= 10; i++) {
             notes.push(_createNote())
-            console.log('note after creation',notes[i])
         }
     }
     utilService.saveToStorage(NOTE_KEY, notes)
 }
+
+
+

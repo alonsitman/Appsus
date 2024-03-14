@@ -1,0 +1,40 @@
+
+*{
+    box-sizing: border-box;
+}
+
+.note-editor-preview{
+    display: flex;
+    flex-flow: column;
+    position: relative;
+    text-align:left;
+}
+.note-editor-preview > *{
+    margin-top: 1em;
+}
+.note-editor-preview .header{
+    color: #202124;
+    font-size: 1rem;
+    padding: 12px 16px 0px;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    height: auto;
+}
+
+
+.note-editor-preview .main{
+    color: #202124;
+    font-size: 0.875rem;
+    padding: 12px 16px;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    height: auto;
+}
+
+.note-editor-preview textarea{
+    width: 100%;
+    min-height: 40px;
+    border: none;
+    outline: none;
+    overflow-y: auto
+}
