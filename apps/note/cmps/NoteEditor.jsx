@@ -1,28 +1,36 @@
-export function NoteEditor({ editorHeaderValue, editorMainValue, handleEditorHeaderChange, handleEditorMainChange, editorRef}) {
+export function NoteEditor({ editorHeaderValue, editorMainValue, handleEditorHeaderChange, handleEditorMainChange, 
+                             editorRef, noteContentClicked, editorValues,  currentEditedNoteValues, handleEditorChange}) {
+
+                                
+    if(noteContentClicked === false){
+        console.log('Not is clicked === false')
+       
+    }
+
     return (
         <section ref={editorRef} className="note-editor">
             <form  className="note-editor-preview">
                 <textarea 
                     className="header" 
-                    value={editorHeaderValue} 
-                    name="text" 
+                    value={currentEditedNoteValues.info.title} 
+                    name="title" 
                     type="text" 
-                    placeholder="title" 
-                    onChange={handleEditorHeaderChange} 
+                    placeholder="Title" 
+                    onChange={handleEditorChange} 
                     style={{ minHeight: '50px', height: 'auto', overflowY: 'auto' }} 
                 />
                 <textarea 
                     className="main" 
-                    value={editorMainValue} 
-                    name="title" 
+                    value={currentEditedNoteValues.info.txt} 
+                    name="txt" 
                     type="text" 
-                    placeholder="note" 
-                    onChange={handleEditorMainChange} 
+                    placeholder="Note" 
+                    onChange={handleEditorChange} 
                     style={{ minHeight: '50px', height: 'auto', overflowY: 'auto' }} 
                 />
             </form>
         </section>
-    );
+    )
 }
 
 

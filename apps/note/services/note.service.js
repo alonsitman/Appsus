@@ -2,6 +2,7 @@ import { utilService } from '../../../services/util.service.js'
 import { storageService } from '../../../services/async-storage.service.js'
 
 const NOTE_KEY = 'noteDB'
+const colorPicker = ['#FF7F50', '#FFFFE0', '#C2B280', '#ADD8E6', '#abaeb0', '#b2d1c8', '#FFFAF0', '#F9B7FF', '#FFB6C1', '#D3D3D3', '#FFF44F','#FFFFCC', '#00FF7F', '#FA8072']
 
 //For debug ONLY
 _createNotes()
@@ -33,7 +34,8 @@ function removeNote(noteId) {
 }
 
 function saveNote(note) {
-    if (note.id) {
+    if (note.id != '') {
+        console.log('saving note')
         return storageService.put(NOTE_KEY, note)
     } else {
         note = _createNote()
@@ -43,8 +45,9 @@ function saveNote(note) {
 
 function getEmptyNote() {
     return {
-        id: 'n101',
+        id: '',
         createdAt: 1112222,
+        updatedAt: 1112222,
         type: 'NoteTxt',
         isPinned: false,
         style: {
@@ -57,11 +60,13 @@ function getEmptyNote() {
     }
 }
 
+
 function _createNote() {
     const note = getEmptyNote()
     note.id = utilService.makeId()
     note.info.title = utilService.makeLorem(utilService.getRandomIntInclusive(1, 4))
     note.info.txt = utilService.makeLorem(utilService.getRandomIntInclusive(5, 15))
+    note.backgroundColor = colorPicker[utilService.getRandomIntInclusive(0, colorPicker.length - 1)]
     return note
 }
 

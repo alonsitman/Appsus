@@ -7,9 +7,9 @@ import { showSuccessMsg, showErrorMsg } from "../../../services/event-bus.servic
 export function NoteIndex() {
     const [notes, setNotes] = useState(null)
     const [noteContentClicked, setNoteContentClicked] = useState(false)
-    const [editorHeaderValue, setEditorHeaderValue] = useState('')
-    const [editorMainValue, setEditorMainValue] = useState('')
-    
+    const [currentEditedNoteValues, setCurrentEditedNoteValues] = useState(noteService.getEmptyNote())
+    const [selectedNote, setSelectedNote] = useState('')
+
 
     const editorRef = useRef(null)
 
@@ -17,6 +17,7 @@ export function NoteIndex() {
         document.addEventListener('mousedown', handleClickOutside)
         loadNotes()
     }, [])
+
 
     function loadNotes() {
         noteService.query()
@@ -29,6 +30,7 @@ export function NoteIndex() {
             })
     }
 
+
     function onRemoveNote(noteId) {
         noteService.removeNote(noteId)
             .then(() => {
@@ -40,38 +42,40 @@ export function NoteIndex() {
             })
     }
 
-    // function onSaveNote(noteId) {
-    //     noteService.saveNote(noteId)
-    //     .then((notes) =>{
-    //         setNotes((prevNotes) => prevNotes.map((note) => note === note.id))
-    //     })
-    // }
 
-
-    function onContentNoteClick(note) {
-        setNoteContentClicked(true)
-        setEditorMainValue(note.info.txt)
-        setEditorHeaderValue(note.info.title)
-        //TODO remove the render of the note
+    function onSaveNote(newNote) {
+        console.log('trying saving note!!', newNote.id)
+        if (newNote) {
+            noteService.saveNote(newNote)
+                .then(() => {
+                    setNotes((prevNotes) => prevNotes.map((note) => note.id === newNote.id ? { ...note, ...newNote } : note))
+                })
+        }
     }
 
 
+    function onContentNoteClick(event, note) {
+        event.stopPropagation()
+        console.log('currect edited note values', note)
+
+        setNoteContentClicked(true)
+        setCurrentEditedNoteValues((prevNote) => prevNote = note)
+        console.log('The noteeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',currentEditedNoteValues)
+        //TODO remove the render of the note
+    }
+
     function handleClickOutside(event) {
-        console.log('The element now : ', event.target)
-        console.log('editorRef.current', editorRef.current)
         if (editorRef.current && !editorRef.current.contains(event.target)) {
             setNoteContentClicked(false)
+            onSaveNote(currentEditedNoteValues)
             //TODO rerender the note
         }
     }
 
-    const handleEditorHeaderChange = (event) => {
-        setEditorHeaderValue(event.target.value);
-    }
-
-    const handleEditorMainChange = (event) => {
-        setEditorMainValue(event.target.value);
-    }
+    const handleEditorChange = ({ target }) => {
+        setCurrentEditedNoteValues(prevEditedNoteValues =>
+            ({ ...prevEditedNoteValues, info: { ...prevEditedNoteValues.info, [target.name]: target.value } }))
+    } 
 
 
     if (!notes) return <React.Fragment>loading...</React.Fragment>
@@ -81,12 +85,11 @@ export function NoteIndex() {
         {noteContentClicked &&
             <div>
                 <div className="overlay"></div>
-                <NoteEditor 
-                    editorHeaderValue={editorHeaderValue}
-                    editorMainValue={editorMainValue}
-                    handleEditorHeaderChange={handleEditorHeaderChange}
-                    handleEditorMainChange={handleEditorMainChange}
-                    editorRef = {editorRef}
+                <NoteEditor
+                    editorRef={editorRef}
+                    noteContentClicked={noteContentClicked}
+                    currentEditedNoteValues={currentEditedNoteValues}
+                    handleEditorChange= {handleEditorChange}
                 />
             </div>
         }
