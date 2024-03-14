@@ -1,5 +1,13 @@
+.mail-preview {
+    display: flex;
+    justify-content: space-between;
+
+    /* font-weight: normal; */
+}
+
 .mail-preview.read {
     font-weight: normal;
+    color: blueviolet;
 }
 
 .mail-preview.unread {

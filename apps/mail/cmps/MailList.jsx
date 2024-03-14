@@ -12,20 +12,22 @@ export function MailList({mails, onRemoveMail}) {
     const [selectedMail, setSelectedMail] = useState(null)
     const handleMailClick = (mailId) => {
         const clickedMail = mails.find(mail => mail.id === mailId)
+        clickedMail.isRead = true
         setSelectedMail(clickedMail)
+
     }
 
     const handleCloseMailDetails = () => {
         setSelectedMail(null)
     }
 
-    return (<div>
+    return <div>
         {selectedMail ? 
             <MailDetails mail={selectedMail} /> : (<div>
         <pre>Unread: {unreadCount}</pre>
         <ul className="mail-list">
             {
-                mails.map(mail => <li key={mail.id}>
+                mails.map(mail => <li key={mail.id} >
                     <MailPreview mail={mail} onClick={ () => handleMailClick(mail.id)}/>
                     <div className="mail-actions">
                         <button className="remove-btn" onClick={() => onRemoveMail(mail.id)}>X</button>
@@ -39,5 +41,5 @@ export function MailList({mails, onRemoveMail}) {
         {selectedMail && (
             <button onClick={handleCloseMailDetails}>Close</button>
         )}
-    </div>)
+    </div>
 }
