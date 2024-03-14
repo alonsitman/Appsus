@@ -39,11 +39,11 @@ export function MailCompose() {
     
     return (
         <div className="mail-compose">
-            {!showCompose && (
-                <button onClick={toggleCompose}>Compose</button>
-            )}
+            
+            <button onClick={toggleCompose}>Compose</button>
+           
             {showCompose && (
-            <form onSubmit={handleSubmit}>
+            <form className="mail-compose-editor" onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="recipient">To:</label>
                     <input
@@ -74,7 +74,7 @@ export function MailCompose() {
                     />
                 </div>
                 <button type="submit">Send</button>
-                <button onClick={toggleCompose}>Cancel</button>
+                <button onClick={toggleCompose}>X</button>
             </form>
             )}
         </div>

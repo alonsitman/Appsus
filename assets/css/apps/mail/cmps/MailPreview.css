@@ -1,8 +1,8 @@
 .mail-preview {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
 
-    /* font-weight: normal; */
+    width: 100%;
 }
 
 .mail-preview.read {
@@ -12,4 +12,8 @@
 
 .mail-preview.unread {
     font-weight: bold;
+}
+
+.mail-preview h4 {
+    
 }
