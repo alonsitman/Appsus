@@ -1,3 +1,16 @@
 .mail-compose {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+
+    padding: 20px;
+}
+
+.mail-compose button {
+    height: 100%;
+    
+    border: none;
+    border-radius: 10px;
+    
     background-color: #C2E7FF;
 }

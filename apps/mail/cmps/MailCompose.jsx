@@ -40,7 +40,7 @@ export function MailCompose() {
     return (
         <div className="mail-compose">
             {!showCompose && (
-                <button onClick={toggleCompose}>Compose Mail</button>
+                <button onClick={toggleCompose}>Compose</button>
             )}
             {showCompose && (
             <form onSubmit={handleSubmit}>
