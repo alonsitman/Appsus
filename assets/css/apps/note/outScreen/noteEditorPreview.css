@@ -19,6 +19,7 @@
     overflow-wrap: break-word;
     overflow: hidden;
     height: auto;
+    overflow-y: auto;
 }
 
 
@@ -29,6 +30,8 @@
     overflow-wrap: break-word;
     overflow: hidden;
     height: auto;
+    overflow-y: auto;
+    height: auto;
 }
 
 .note-editor-preview textarea{
@@ -36,5 +39,6 @@
     min-height: 40px;
     border: none;
     outline: none;
-    overflow-y: auto
+    overflow-y: auto;
+    height: auto;
 }
