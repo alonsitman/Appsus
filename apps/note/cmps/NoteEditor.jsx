@@ -1,7 +1,7 @@
-export function NoteEditor({ editorHeaderValue, editorMainValue, handleEditorHeaderChange, handleEditorMainChange }) {
+export function NoteEditor({ editorHeaderValue, editorMainValue, handleEditorHeaderChange, handleEditorMainChange, editorRef}) {
     return (
-        <div className="note-editor">
-            <form className="note-editor-preview">
+        <section ref={editorRef} className="note-editor">
+            <form  className="note-editor-preview">
                 <textarea 
                     className="header" 
                     value={editorHeaderValue} 
@@ -21,7 +21,7 @@ export function NoteEditor({ editorHeaderValue, editorMainValue, handleEditorHea
                     style={{ minHeight: '50px', height: 'auto', overflowY: 'auto' }} 
                 />
             </form>
-        </div>
+        </section>
     );
 }
 

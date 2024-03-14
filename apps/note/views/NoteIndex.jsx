@@ -7,8 +7,9 @@ import { showSuccessMsg, showErrorMsg } from "../../../services/event-bus.servic
 export function NoteIndex() {
     const [notes, setNotes] = useState(null)
     const [noteContentClicked, setNoteContentClicked] = useState(false)
-    const [editorHeaderValue, setEditorHeaderValue] = useState('');
-    const [editorMainValue, setEditorMainValue] = useState('');
+    const [editorHeaderValue, setEditorHeaderValue] = useState('')
+    const [editorMainValue, setEditorMainValue] = useState('')
+    
 
     const editorRef = useRef(null)
 
@@ -39,15 +40,25 @@ export function NoteIndex() {
             })
     }
 
+    // function onSaveNote(noteId) {
+    //     noteService.saveNote(noteId)
+    //     .then((notes) =>{
+    //         setNotes((prevNotes) => prevNotes.map((note) => note === note.id))
+    //     })
+    // }
 
-    function onContentNoteClick(noteId) {
+
+    function onContentNoteClick(note) {
         setNoteContentClicked(true)
+        setEditorMainValue(note.info.txt)
+        setEditorHeaderValue(note.info.title)
         //TODO remove the render of the note
     }
 
 
     function handleClickOutside(event) {
         console.log('The element now : ', event.target)
+        console.log('editorRef.current', editorRef.current)
         if (editorRef.current && !editorRef.current.contains(event.target)) {
             setNoteContentClicked(false)
             //TODO rerender the note
@@ -70,11 +81,12 @@ export function NoteIndex() {
         {noteContentClicked &&
             <div>
                 <div className="overlay"></div>
-                <NoteEditor
+                <NoteEditor 
                     editorHeaderValue={editorHeaderValue}
                     editorMainValue={editorMainValue}
                     handleEditorHeaderChange={handleEditorHeaderChange}
                     handleEditorMainChange={handleEditorMainChange}
+                    editorRef = {editorRef}
                 />
             </div>
         }
