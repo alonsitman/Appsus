@@ -1,5 +1,4 @@
-export function NoteEditor({ editorHeaderValue, editorMainValue, handleEditorHeaderChange, handleEditorMainChange, 
-                             editorRef, noteContentClicked, editorValues,  currentEditedNoteValues, handleEditorChange}) {
+export function NoteEditor({ editorRef, noteContentClicked,currentEditedNoteValues, handleEditorChange}) {
 
                                 
     if(noteContentClicked === false){

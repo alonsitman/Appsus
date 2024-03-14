@@ -15,6 +15,7 @@
 .note-editor{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     background-color: white;
+    transition: transform 0.3s ease-in-out;
 }
 
 /* measurement */

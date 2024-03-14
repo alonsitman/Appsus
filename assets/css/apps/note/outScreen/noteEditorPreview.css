@@ -35,7 +35,6 @@
     overflow: hidden;
     height: auto;
     overflow-y: auto;
-    height: auto;
 }
 
 .note-editor-preview textarea{
