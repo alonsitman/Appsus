@@ -7,16 +7,19 @@ import { showSuccessMsg, showErrorMsg } from "../../../services/event-bus.servic
 export function NoteIndex() {
     const [notes, setNotes] = useState(null)
     const [noteContentClicked, setNoteContentClicked] = useState(false)
-    const [editorHeaderValue, setEditorHeaderValue] = useState('')
-    const [editorMainValue, setEditorMainValue] = useState('')
-    
+    const [currentEditedNoteValues, setCurrentEditedNoteValues] = useState(noteService.getEmptyNote())
+
 
     const editorRef = useRef(null)
 
     useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside)
         loadNotes()
     }, [])
+
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClickOutside)
+    }, [])
+
 
     function loadNotes() {
         noteService.query()
@@ -29,6 +32,7 @@ export function NoteIndex() {
             })
     }
 
+
     function onRemoveNote(noteId) {
         noteService.removeNote(noteId)
             .then(() => {
@@ -40,53 +44,59 @@ export function NoteIndex() {
             })
     }
 
-    // function onSaveNote(noteId) {
-    //     noteService.saveNote(noteId)
-    //     .then((notes) =>{
-    //         setNotes((prevNotes) => prevNotes.map((note) => note === note.id))
-    //     })
-    // }
 
-
-    function onContentNoteClick(note) {
-        setNoteContentClicked(true)
-        setEditorMainValue(note.info.txt)
-        setEditorHeaderValue(note.info.title)
-        //TODO remove the render of the note
+    function onSaveNote(newNote) {
+        console.log('Enter onSaveNote ', newNote)
+        if (newNote) {
+            noteService.saveNote(newNote)
+                .then(() => {
+                    setNotes((prevNotes) => prevNotes.map((note) => note.id === newNote.id ? { ...note, ...newNote } : note))
+                    
+                })
+        }
     }
 
 
+    function onContentNoteClick(event, selectedNote) {
+        console.log('Enter onContentNoteClick',  selectedNote)
+        event.stopPropagation()
+        setNotes((prevNotes => prevNotes.filter((note) => note.id != selectedNote.id)))
+        setNoteContentClicked(true)
+        setCurrentEditedNoteValues({ ... selectedNote })
+        //TODO remove the render of the note
+    }
+
     function handleClickOutside(event) {
-        console.log('The element now : ', event.target)
-        console.log('editorRef.current', editorRef.current)
+        console.log('Enter handleClickOutside')
         if (editorRef.current && !editorRef.current.contains(event.target)) {
+            console.log(currentEditedNoteValues)
             setNoteContentClicked(false)
+            loadNotes(currentEditedNoteValues.id)
             //TODO rerender the note
         }
     }
 
-    const handleEditorHeaderChange = (event) => {
-        setEditorHeaderValue(event.target.value);
-    }
-
-    const handleEditorMainChange = (event) => {
-        setEditorMainValue(event.target.value);
+    const handleEditorChange = ({ target }) => {
+        console.log('Enter handleEditorChange ', target.value)
+        setCurrentEditedNoteValues(prevEditedNoteValues =>
+            ({ ...prevEditedNoteValues, info: { ...prevEditedNoteValues.info, [target.name]: target.value } }))
+        
+        onSaveNote(currentEditedNoteValues)
+        console.log('currentValues', currentEditedNoteValues)
     }
 
 
     if (!notes) return <React.Fragment>loading...</React.Fragment>
     return <section className="note-index">
-        <h1>notes</h1>
         <NoteList notes={notes} onRemoveNote={onRemoveNote} onContentNoteClick={onContentNoteClick} />
         {noteContentClicked &&
             <div>
                 <div className="overlay"></div>
-                <NoteEditor 
-                    editorHeaderValue={editorHeaderValue}
-                    editorMainValue={editorMainValue}
-                    handleEditorHeaderChange={handleEditorHeaderChange}
-                    handleEditorMainChange={handleEditorMainChange}
-                    editorRef = {editorRef}
+                <NoteEditor
+                    editorRef={editorRef}
+                    noteContentClicked={noteContentClicked}
+                    currentEditedNoteValues={currentEditedNoteValues}
+                    handleEditorChange={handleEditorChange}
                 />
             </div>
         }

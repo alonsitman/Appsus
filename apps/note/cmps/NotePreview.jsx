@@ -1,11 +1,13 @@
 import { NotePreviewToolBar } from "./NotePreviewToolBar.jsx"
 
+    
+
 export function NotePreview({ note, onRemoveNote, onContentNoteClick}) {
     return <section className="note-preview">
-        <section className="header" onClick={() => onContentNoteClick(note)}>
+        <section className="header" onClick={(event) => onContentNoteClick(event,note)}>
             <p>{note.info.title}</p>
         </section>
-        <section className="main" onClick={() => onContentNoteClick(note)}>
+        <section className="main" onClick={(event) => onContentNoteClick(event,note)}>
             <p>{note.info.txt}</p>
         </section>
         <section className="footer">
