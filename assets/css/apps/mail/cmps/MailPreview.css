@@ -1,19 +1,23 @@
 .mail-preview {
     display: flex;
-    /* justify-content: space-between; */
-
-    width: 100%;
-}
-
-.mail-preview.read {
-    font-weight: normal;
-    color: blueviolet;
-}
-
-.mail-preview.unread {
-    font-weight: bold;
+    justify-content: space-between;
+    flex-grow: 1;
+    
+    
 }
 
 .mail-preview h4 {
-    
+    font-weight: normal;
+}
+
+.mail-preview.unread h4{
+    font-weight: bold;
+}
+
+.mail-preview h4.sender {
+    width: 168px;
+}
+
+.mail-preview h4.subject {
+    flex-grow: 1;
 }

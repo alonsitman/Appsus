@@ -1,3 +1,16 @@
 .mail-filter {
-    grid-column: 1;
+    grid-area: 2 / 1 / -1 / -1;
+
+    padding: 20px;
+}
+
+.mail-filter ul {
+    list-style-type: none;
+}
+
+.mail-filter button {
+    background-color: transparent;
+    border: none;
+
+    padding: 10px;
 }
