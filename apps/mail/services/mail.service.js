@@ -43,9 +43,9 @@ function save(mail) {
 
 function getEmptyMail() {
     return {
-        id: 'e101',
-        subject: 'Miss you!',
-        body: 'Would love to catch up sometimes',
+        id: '',
+        subject: '',
+        body: '',
         isRead: false,
         sentAt : 1551133930594,
         removedAt : null,

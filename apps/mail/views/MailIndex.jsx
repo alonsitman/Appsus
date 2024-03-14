@@ -2,6 +2,8 @@ const { useState, useEffect } = React
 
 import { mailService } from "../services/mail.service.js"
 import { MailList } from "../cmps/MailList.jsx"
+import { MailCompose } from "../cmps/MailCompose.jsx"
+
 
 export function MailIndex() {
     const [mails, setMails] = useState(null)
@@ -29,15 +31,16 @@ export function MailIndex() {
             })
     }
 
-    console.log('mails from mail index:', mails)
+    
+
     if (!mails) return <div>Loading...</div>
     return <section className="mail-index">
-        <h1>mail app</h1>
+        <MailCompose />        
         <MailList
             mails={mails}
             onRemoveMail={onRemoveMail}
         />
-      
+
      
     </section>
 }
