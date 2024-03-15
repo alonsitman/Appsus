@@ -1,21 +1,21 @@
 import { NoteCreatorToolBar } from "./NoteCreatorToolBar.jsx"
 
-export function NoteCreator(handleEditorChange) {
-    return <section className="note-creator">
+export function NoteCreator({ handleCreatorChange, currentEditedNoteValues, creatorRef }) {
+    return <section ref={creatorRef} className="note-creator">
         <form className="note-creator-preview">
             <textarea
                 className="header"
                 name="title"
                 type="text"
                 placeholder="Title"
-                onChange={handleEditorChange}
+                onChange={handleCreatorChange}
             />
             <textarea
                 className="main"
                 name="txt"
                 type="text"
                 placeholder="Take a note..."
-                onChange={handleEditorChange}
+                onChange={handleCreatorChange}
             />
         </form>
         <section className="footer">

@@ -38,7 +38,6 @@ function saveNote(note) {
         console.log('saving note')
         return storageService.put(NOTE_KEY, note)
     } else {
-        note = _createNote()
         return storageService.post(NOTE_KEY, note)
     }
 }
@@ -51,7 +50,7 @@ function getEmptyNote() {
         type: 'NoteTxt',
         isPinned: false,
         style: {
-            backgroundColor: '#00d'
+            backgroundColor: '#FFFFFF'
         },
         info: {
             title: '',
