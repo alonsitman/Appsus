@@ -66,7 +66,7 @@ function _createNote() {
     note.id = utilService.makeId()
     note.info.title = utilService.makeLorem(utilService.getRandomIntInclusive(1, 4))
     note.info.txt = utilService.makeLorem(utilService.getRandomIntInclusive(5, 15))
-    note.backgroundColor = colorPicker[utilService.getRandomIntInclusive(0, colorPicker.length - 1)]
+    note.style.backgroundColor = colorPicker[utilService.getRandomIntInclusive(0, colorPicker.length - 1)]
     return note
 }
 

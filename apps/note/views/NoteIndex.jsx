@@ -35,7 +35,13 @@ export function NoteIndex() {
 
 
     function onRemoveNote(noteId) {
-        noteService.removeNote(noteId)
+        const elLi = document.getElementById(`li-${noteId}`);
+        console.log('elli', elLi)
+        if(elLi){
+            elLi.classList.add('animate__backOutRight', 'animate__animated')
+        }
+        setTimeout(() => {
+            noteService.removeNote(noteId)
             .then(() => {
                 setNotes((prevNotes) => prevNotes.filter(note => note.id !== noteId))
                 console.log(`Note ${noteId} has been removed successfuly`)
@@ -43,6 +49,7 @@ export function NoteIndex() {
             .catch((err) => {
                 console.log(`Note ${noteId} removed failed`)
             })
+        },1000)
     }
 
 
@@ -79,7 +86,7 @@ export function NoteIndex() {
 
     const handleEditorChange = ({ target }) => {
         console.log('Enter handleEditorChange ', target.value)
-        setCurrentEditedNoteValues(prevEditedNoteValues =>
+        setCurrentEditedNoteValues(prevEditedNoteValues => 
             ({ ...prevEditedNoteValues, info: { ...prevEditedNoteValues.info, [target.name]: target.value } }))
         
         onSaveNote(currentEditedNoteValues)
@@ -89,8 +96,8 @@ export function NoteIndex() {
 
     if (!notes) return <React.Fragment>loading...</React.Fragment>
     return <section className="note-index">
-        <NoteCreator/>
-        <NoteList notes={notes} onRemoveNote={onRemoveNote} onContentNoteClick={onContentNoteClick} />
+        <NoteCreator handleEditorChange={handleEditorChange}/>
+        <NoteList notes={notes} onRemoveNote={onRemoveNote} onContentNoteClick={onContentNoteClick}  animate={!noteContentClicked} />
         {noteContentClicked &&
             <div>
                 <div className="overlay"></div>
@@ -99,8 +106,11 @@ export function NoteIndex() {
                     noteContentClicked={noteContentClicked}
                     currentEditedNoteValues={currentEditedNoteValues}
                     handleEditorChange={handleEditorChange}
+                    onRemoveNote={onRemoveNote}
+                    setNoteContentClicked = {setNoteContentClicked}
                 />
             </div>
         }
     </section>
 }
+
