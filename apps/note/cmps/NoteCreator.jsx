@@ -1,7 +1,20 @@
-
+const {useState, useEffect} = React
 import { NoteCreatorToolBar } from "./NoteCreatorToolBar.jsx"
 
-export function NoteCreator({ handleCreatorChange, creatorRef, noteCreatorClicked, setNoteCreatorClicked }) {
+export function NoteCreator({ handleCreatorChange, creatorRef, noteCreatorClicked, setNoteCreatorClicked, setCreatedNoteEmpty }) {
+    const [titleValue, setTitleValue] = useState('')
+    const [txtValue, setTxtValue] = useState('')
+
+    console.log('asdasdsadasdasdas', titleValue)
+    console.log('asdasdsadasdasdas', txtValue)
+
+    useEffect(() => {
+        if (titleValue.trim() === '' && txtValue.trim() === '') {
+            setCreatedNoteEmpty(true);
+        } else {
+            setCreatedNoteEmpty(false);
+        }
+    }, [titleValue, txtValue, setCreatedNoteEmpty]);
 
 
     return <section ref={creatorRef}  className={noteCreatorClicked ? "note-creator" : ""}>
@@ -11,14 +24,20 @@ export function NoteCreator({ handleCreatorChange, creatorRef, noteCreatorClicke
                 name="title"
                 type="text"
                 placeholder="Title"
-                onChange={handleCreatorChange}
+                onChange={(event) => {
+                    handleCreatorChange(event)
+                    setTitleValue(event.target.value)
+                }}
             />)}
             <textarea
                 className={`main${noteCreatorClicked ? '' : ' main-active'}`}
                 name="txt"
                 type="text"
                 placeholder="Take a note..."
-                onChange={handleCreatorChange}
+                onChange={(event) => {
+                    handleCreatorChange(event)
+                    setTxtValue(event.target.value)
+                }}
                 onClick={() => setNoteCreatorClicked(true)}
             />
         </form>
