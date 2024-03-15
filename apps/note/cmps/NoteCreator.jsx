@@ -1,3 +1,4 @@
+import { NoteCreatorToolBar } from "./NoteCreatorToolBar.jsx"
 
 export function NoteCreator(handleEditorChange) {
     return <section className="note-creator">
@@ -17,8 +18,9 @@ export function NoteCreator(handleEditorChange) {
                 onChange={handleEditorChange}
             />
             <section className="footer">
-                
+            <NoteCreatorToolBar/>
             </section>
+            <button className="btn pin-note-btn fa-solid fa-thumbtack"></button>
         </form>
     </section>
 }
