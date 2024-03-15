@@ -45,6 +45,7 @@ export function MailIndex() {
     return <section className="mail-index">
         <MailCompose />
         <MailFilter 
+            mails={mails}
             activeFilter={activeFilter}
             onFilterChange={onFilterChange}
         />       

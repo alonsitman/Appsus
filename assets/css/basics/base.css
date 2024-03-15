@@ -1,3 +1,8 @@
+:root {
+    font-size: 14px;
+    font-family: "Google Sans", Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+}
+
 body {
     margin: 0;
 }
@@ -33,3 +38,7 @@ img {
     background-color: rgba(128, 128, 128, 0.2);
     border-radius: 2em;
 } 
+
+button {
+    cursor: pointer;
+}

@@ -33,39 +33,43 @@ export function MailCompose() {
         setShowCompose(false)
     }
     
-    const toggleCompose = () => {
-        setShowCompose(!showCompose)
-    }
-    
+  
     return (
         <div className="mail-compose">
-            
-            <button onClick={toggleCompose}>Compose</button>
-           
+            <div className="compose">
+                <span className="penIcon"></span>
+                <button className="btn-compose" onClick={() => setShowCompose(true)}>Compose</button>
+            </div>
             {showCompose && (
             <form className="mail-compose-editor" onSubmit={handleSubmit}>
+                <div className="editor-header">
+                    <span>New Message</span>
+                    <button onClick={() => setShowCompose(false)}>X</button>
+                </div>
                 <div>
-                    <label htmlFor="recipient">To:</label>
+                    <label htmlFor="recipient"></label>
                     <input
                         type="email"
                         id="recipient"
+                        placeholder="Recipients"
                         value={recipient}
                         onChange={handleRecipientChange}
                         required
                     />
                 </div>
                 <div>
-                    <label htmlFor="subject">Subject:</label>
+                    <label htmlFor="subject"></label>
                     <input
                     type="text"
                     id="subject"
+                    placeholder="Subject"
                     value={subject}
                     onChange={handleSubjectChange}
                     required
                     />
                 </div>
                 <div>
-                    <label htmlFor="body">Body:</label>
+                    <label htmlFor="body"></label>
                     <textarea
                     id="body"
                     value={body}
@@ -73,8 +77,7 @@ export function MailCompose() {
                     required
                     />
                 </div>
-                <button type="submit">Send</button>
-                <button onClick={toggleCompose}>X</button>
+                <button className="btn-send" type="submit">Send</button>
             </form>
             )}
         </div>

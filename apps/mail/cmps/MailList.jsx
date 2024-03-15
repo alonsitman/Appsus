@@ -6,8 +6,6 @@ import { MailDetails } from "./MailDetails.jsx"
 
 
 export function MailList({mails, onRemoveMail}) {
-    const unreadMails = mails.filter(mail => !mail.isRead)
-    const unreadCount = unreadMails.length
     
     const [selectedMail, setSelectedMail] = useState(null)
     const handleMailClick = (mailId) => {
@@ -24,13 +22,17 @@ export function MailList({mails, onRemoveMail}) {
     return <div className="mail-list">
         {selectedMail ? 
             <MailDetails mail={selectedMail} /> : (<div>
-        <pre>Unread: {unreadCount}</pre>
+        <div className="criteria">
+            <div><span className=""></span>  Primary</div>
+            <div><span className=""></span>  Promotions</div>
+            <div><span className="socialIcon"></span>  Social</div>
+        </div>
         <ul>
             {
                 mails.map(mail => <li key={mail.id} >
                     <MailPreview mail={mail} onClick={ () => handleMailClick(mail.id)}/>
                     <div className="mail-actions">
-                        <button className="remove-btn btn trashIcon" onClick={() => onRemoveMail(mail.id)}></button>
+                        <button className="btn remove-btn trashIcon" onClick={() => onRemoveMail(mail.id)}></button>
                     </div>
                 </li>)
             }
