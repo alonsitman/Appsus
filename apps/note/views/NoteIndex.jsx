@@ -49,7 +49,7 @@ export function NoteIndex() {
             .catch((err) => {
                 console.log(`Note ${noteId} removed failed`)
             })
-        },100)
+        },1000)
     }
 
 
@@ -95,9 +95,9 @@ export function NoteIndex() {
 
 
     if (!notes) return <React.Fragment>loading...</React.Fragment>
-    return <section className="note-index animate__animated animate__bounceInDown">
+    return <section className="note-index">
         <NoteCreator/>
-        <NoteList notes={notes} onRemoveNote={onRemoveNote} onContentNoteClick={onContentNoteClick} />
+        <NoteList notes={notes} onRemoveNote={onRemoveNote} onContentNoteClick={onContentNoteClick}  animate={!noteContentClicked} />
         {noteContentClicked &&
             <div>
                 <div className="overlay"></div>
@@ -113,3 +113,4 @@ export function NoteIndex() {
         }
     </section>
 }
+
