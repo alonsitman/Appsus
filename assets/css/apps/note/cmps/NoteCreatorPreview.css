@@ -1,11 +1,51 @@
-*{
+* {
     box-sizing: border-box;
 }
 
-.note-creator-preview{
+.note-creator-preview {
     display: flex;
     flex-flow: column;
     position: relative;
-    text-align:left;
-    height: 97%;
+    text-align: left;
+}
+
+.note-creator-preview main {
+    margin-top: 1em;
+}
+
+.note-creator-preview > *{
+    text-align: ;
+}
+
+.note-creator-preview .header {
+    color: #202124;
+    font-size: 1rem;
+    padding: 12px 16px 0px;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    height: auto;
+    overflow-y: auto;
+}
+
+.note-creator-preview .main {
+    flex-grow: 1;
+    color: #202124;
+    font-size: 0.875rem;
+    padding: 12px 16px;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    height: auto;
+    overflow-y: auto;
+}
+
+
+.note-creator-preview textarea {
+    background-color: transparent;
+    width: 100%;
+    min-height: 40px;
+    border: none;
+    outline: none;
+    overflow-y: auto;
+    height: auto;
+    resize: none;
 }
