@@ -1,7 +1,7 @@
 const {useState, useEffect} = React
 import { NoteCreatorToolBar } from "./NoteCreatorToolBar.jsx"
 
-export function NoteCreator({ handleCreatorChange, creatorRef, noteCreatorClicked, setNoteCreatorClicked, setCreatedNoteEmpty }) {
+export function NoteCreator({ handleCreatorChange, creatorRef, noteCreatorClicked, setNoteCreatorClicked, setCreatedNoteEmpty, isNoteJustAdded}) {
     const [titleValue, setTitleValue] = useState('')
     const [txtValue, setTxtValue] = useState('')
     
@@ -13,7 +13,7 @@ export function NoteCreator({ handleCreatorChange, creatorRef, noteCreatorClicke
 
 
 
-    return <section ref={creatorRef}  className={noteCreatorClicked ? "note-creator" : ""}>
+    return <section ref={creatorRef} className={(noteCreatorClicked ? "note-creator" : "") + (isNoteJustAdded ? ' animate__animated animate__rollIn' : '')}>
         <form className="note-creator-preview">
             {noteCreatorClicked && (<textarea
                 className="header"

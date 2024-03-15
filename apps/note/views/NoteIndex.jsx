@@ -26,7 +26,7 @@ export function NoteIndex() {
     useEffect(() => {
         document.addEventListener('mousedown', handleClicks)
     }, [])
-    
+
     useEffect(() => {
         if (!isCreatedNoteEmpty && !noteCreatorClicked) {
             console.log('the values:', currentCreatedNoteValues);
@@ -136,9 +136,10 @@ export function NoteIndex() {
             noteCreatorClicked={noteCreatorClicked}
             setNoteCreatorClicked={setNoteCreatorClicked}
             setCreatedNoteEmpty={setCreatedNoteEmpty}
+            isNoteJustAdded={isNoteJustAdded} 
         />
         <NoteList notes={notes} onRemoveNote={onRemoveNote} onContentNoteClick={onContentNoteClick} 
-                  animate={!noteContentClicked} isNoteJustAdded={isNoteJustAdded} setIsNoteJustAdded={setIsNoteJustAdded}/>
+                  animate={!noteContentClicked}/>
         {noteContentClicked &&
             <div>
                 <div className="overlay"></div>
