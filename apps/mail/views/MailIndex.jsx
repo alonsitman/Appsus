@@ -9,8 +9,7 @@ import { mailService } from "../services/mail.service.js"
 
 
 export function MailIndex() {
-    const [mails, setMails] = useState(null)
-    const [activeFilter, setActiveFilter] = useState('inbox')
+    const [mails, setMails] = useState()
 
     useEffect(() => {
         loadMails()
@@ -21,10 +20,6 @@ export function MailIndex() {
             .then((mails) => {
                 setMails(mails)
             })
-    }
-
-    function onFilterChange(activeFilter) {
-        setActiveFilter(activeFilter)
     }
 
     function onRemoveMail(mailId) {
@@ -39,19 +34,15 @@ export function MailIndex() {
             })
     }
 
-    
 
     if (!mails) return <div>Loading...</div>
     return <section className="mail-index">
         <MailCompose />
         <MailFilter 
             mails={mails}
-            activeFilter={activeFilter}
-            onFilterChange={onFilterChange}
         />       
         <MailList
             mails={mails}
-            activeFilter={activeFilter}
             onRemoveMail={onRemoveMail}
         />
 

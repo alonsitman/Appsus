@@ -1,8 +1,17 @@
-export function MailFilter({mails, activeFilter, onFilterChange}) {
-    
+const { useState } = React
+
+import { mailService } from "../services/mail.service.js"
+
+export function MailFilter({mails}) {
+    const [activeFilter, setActiveFilter] = useState(mailService.getDefaultFilter())
     const unreadMails = mails.filter(mail => !mail.isRead)
     const unreadCount = unreadMails.length
-    
+
+    function onFilterChange(activeFilter) {
+        setActiveFilter(activeFilter)
+    }
+
+
     return <section className="mail-filter">
         <ul>
             <li className={activeFilter === 'inbox' ? 'active' : ''}>
