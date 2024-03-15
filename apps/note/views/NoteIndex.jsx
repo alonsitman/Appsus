@@ -96,7 +96,7 @@ export function NoteIndex() {
 
     if (!notes) return <React.Fragment>loading...</React.Fragment>
     return <section className="note-index">
-        <NoteCreator/>
+        <NoteCreator handleEditorChange={handleEditorChange}/>
         <NoteList notes={notes} onRemoveNote={onRemoveNote} onContentNoteClick={onContentNoteClick}  animate={!noteContentClicked} />
         {noteContentClicked &&
             <div>
