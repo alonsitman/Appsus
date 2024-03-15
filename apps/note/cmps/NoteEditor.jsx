@@ -6,8 +6,12 @@ export function NoteEditor({ editorRef, noteContentClicked,currentEditedNoteValu
        
     }
 
+    const formStyle = {
+        backgroundColor: currentEditedNoteValues.style.backgroundColor
+    }
+    
     return (
-        <section ref={editorRef} className="note-editor">
+        <section ref={editorRef} className="note-editor" style={formStyle}>
             <form  className="note-editor-preview">
                 <textarea 
                     className="header" 
@@ -16,7 +20,6 @@ export function NoteEditor({ editorRef, noteContentClicked,currentEditedNoteValu
                     type="text" 
                     placeholder="Title" 
                     onChange={handleEditorChange} 
-                    // style={{ minHeight: '50px', height: 'auto', overflowY: 'auto' }} 
                 />
                 <textarea 
                     className="main" 

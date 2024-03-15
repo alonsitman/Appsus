@@ -79,7 +79,7 @@ export function NoteIndex() {
 
     const handleEditorChange = ({ target }) => {
         console.log('Enter handleEditorChange ', target.value)
-        setCurrentEditedNoteValues(prevEditedNoteValues =>
+        setCurrentEditedNoteValues(prevEditedNoteValues => 
             ({ ...prevEditedNoteValues, info: { ...prevEditedNoteValues.info, [target.name]: target.value } }))
         
         onSaveNote(currentEditedNoteValues)

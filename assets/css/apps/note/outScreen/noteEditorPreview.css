@@ -23,7 +23,6 @@
     overflow: hidden;
     height: auto;
     overflow-y: auto;
-    
 }
 
 .note-editor-preview .main{
@@ -38,6 +37,7 @@
 }
 
 .note-editor-preview textarea{
+    background-color: transparent;
     width: 100%;
     min-height: 40px;
     border: none;
