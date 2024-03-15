@@ -54,3 +54,52 @@
     content: "\f058"; 
     font-weight: solid;
 }
+
+/* Star icon */
+.starIcon::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f005"; 
+    font-weight: solid;
+}
+
+/* Envelope icon */
+.envelopeIcon::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f0e0"; 
+    font-weight: solid;
+}
+
+/* Clock icon */
+.clockIcon::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f017"; 
+    font-weight: solid;
+}
+
+/* File icon */
+.fileIcon::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f15b"; 
+    font-weight: solid;
+}
+
+/* Send icon */
+.sendIcon::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\3e"; 
+    font-weight: solid;
+}
+
+/* Flag icon */
+.flagIcon::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f2b4"; 
+    font-weight: solid;
+}
+
+/* Pen icon */
+.penIcon::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f044"; 
+    font-weight: solid;
+}

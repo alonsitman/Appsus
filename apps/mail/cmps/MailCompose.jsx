@@ -36,9 +36,10 @@ export function MailCompose() {
   
     return (
         <div className="mail-compose">
-            
-            <button className="btn-delete" onClick={() => setShowCompose(true)}>Compose</button>
-           
+            <div className="compose">
+                <span className="penIcon"></span>
+                <button className="btn-compose" onClick={() => setShowCompose(true)}>Compose</button>
+            </div>
             {showCompose && (
             <form className="mail-compose-editor" onSubmit={handleSubmit}>
                 <div className="editor-header">
