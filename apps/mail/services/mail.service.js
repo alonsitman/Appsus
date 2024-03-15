@@ -8,9 +8,9 @@ const loggedinUser = {
 }
 
 const filterBy = {
-    status: 'inbox/sent/trash/draft',
+    status: 'inbox',
     txt: 'puki', // no need to support complex text search
-    isRead: true,
+    isRead: false,
     isStared: false,
     isSnoozed: false,
     isSent: false,
@@ -29,7 +29,7 @@ export const mailService = {
     remove,
     save,
     getEmptyMail,
-    // getDefaultFilter
+    getDefaultFilter
 }
 
 window.cs = mailService
@@ -66,9 +66,13 @@ function getEmptyMail() {
         isRead: false,
         sentAt : 1551133930594,
         removedAt : null,
-        from: 'momo@momo.com',
+        from: utilService.getRandomName() + '@momo.com',
         to: 'user@appsus.com'
     }
+}
+
+function getDefaultFilter() {
+    return filterBy
 }
 
 function _createMail() {
@@ -83,7 +87,7 @@ function _createMails(){
     let mails = utilService.loadFromStorage(MAIL_KEY)
     if(!mails || !mails.length){
         mails = []
-        for(var i = 0; i <= 10; i++){
+        for(var i = 0; i < 30; i++){
             mails.push(_createMail())
         }
     }

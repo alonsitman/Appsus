@@ -16,6 +16,8 @@
 
 .compose .btn-compose {
     border: none;
+
+    font-size: 1em;
     padding-left: 20px;
     background-color: transparent;
 }

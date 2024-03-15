@@ -1,6 +1,7 @@
 export const utilService = {
     makeId,
     makeLorem,
+    getRandomName,
     getRandomIntInclusive,
     getRandomColor,
     padNum,
@@ -21,6 +22,13 @@ function makeId(length = 6) {
     return txt
 }
 
+function getRandomName() {
+    var names = ['Xavier', 'Bar', 'Tomer', 'Idan', 'Gil', 'Jonathan', 'Gal', 'Danny', 'Dez', 'Brian', 'J\'Covan', 'Will', 'John', 'Barack', 'Chinanu', 'Jordan']
+    var idx = getRandomIntInclusive(0, names.length - 1)
+    var name = names[idx]
+    return name
+}
+
 function makeLorem(size = 100) {
     var words = ['The sky', 'above', 'the port', 'was', 'the color of television', 'tuned', 'to', 'a dead channel', '.', 'All', 'this happened', 'more or less', '.', 'I', 'had', 'the story', 'bit by bit', 'from various people', 'and', 'as generally', 'happens', 'in such cases', 'each time', 'it', 'was', 'a different story', '.', 'It', 'was', 'a pleasure', 'to', 'burn']
     var txt = ''
@@ -30,6 +38,7 @@ function makeLorem(size = 100) {
     }
     return txt
 }
+
 
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min)
