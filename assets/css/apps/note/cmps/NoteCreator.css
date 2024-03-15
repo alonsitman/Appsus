@@ -3,6 +3,7 @@
     width: 37.5em; 
     margin: 0 auto;
     max-width: 100%; 
+    height: 200px;
 }
 
 /* Style */
@@ -17,9 +18,9 @@
     padding: 16px;
 }
 
-
 .note-creator .footer{
-    margin-bottom: 0;
+    position: absolute;
+    bottom: 0;
 }
 
 

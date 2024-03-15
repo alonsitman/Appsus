@@ -11,17 +11,17 @@ export function NoteCreator(handleEditorChange) {
                 onChange={handleEditorChange}
             />
             <textarea
-                className="Note"
+                className="main"
                 name="txt"
                 type="text"
                 placeholder="Take a note..."
                 onChange={handleEditorChange}
             />
-            <section className="footer">
-            <NoteCreatorToolBar/>
-            </section>
-            <button className="btn pin-note-btn fa-solid fa-thumbtack"></button>
         </form>
+        <section className="footer">
+            <NoteCreatorToolBar />
+        </section>
+        <button className="btn pin-note-btn fa-solid fa-thumbtack"></button>
     </section>
 }
 
