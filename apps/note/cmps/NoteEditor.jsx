@@ -1,53 +1,41 @@
-export function NoteEditor({ editorRef, noteContentClicked,currentEditedNoteValues, handleEditorChange}) {
+import { NoteEditorToolBar } from "./NoteEditorToolBar.jsx"
+export function NoteEditor({ editorRef, noteContentClicked, currentEditedNoteValues, handleEditorChange, onRemoveNote, setNoteContentClicked }) {
 
-                                
-    if(noteContentClicked === false){
+
+    if (noteContentClicked === false) {
         console.log('Not is clicked === false')
-       
+
     }
 
     const formStyle = {
         backgroundColor: currentEditedNoteValues.style.backgroundColor
     }
-    
+
     return (
         <section ref={editorRef} className="note-editor" style={formStyle}>
-            <form  className="note-editor-preview">
-                <textarea 
-                    className="header" 
-                    value={currentEditedNoteValues.info.title} 
-                    name="title" 
-                    type="text" 
-                    placeholder="Title" 
-                    onChange={handleEditorChange} 
+            <form className="note-editor-preview">
+                <textarea
+                    className="header"
+                    value={currentEditedNoteValues.info.title}
+                    name="title"
+                    type="text"
+                    placeholder="Title"
+                    onChange={handleEditorChange}
                 />
-                <textarea 
-                    className="main" 
-                    value={currentEditedNoteValues.info.txt} 
-                    name="txt" 
-                    type="text" 
-                    placeholder="Note" 
-                    onChange={handleEditorChange} 
-                    // style={{ minHeight: '50px', height: 'auto', overflowY: 'auto' }} 
+                <textarea
+                    className="main"
+                    value={currentEditedNoteValues.info.txt}
+                    name="txt"
+                    type="text"
+                    placeholder="Note"
+                    onChange={handleEditorChange}
                 />
             </form>
+            <section className="footer">
+                <NoteEditorToolBar currentEditedNoteValues={currentEditedNoteValues} onRemoveNote={onRemoveNote} setNoteContentClicked ={setNoteContentClicked} />
+            </section>
+            <button className="btn pin-note-btn fa-solid fa-thumbtack"></button>
+
         </section>
     )
 }
-
-
-// <section className="note-preview">
-//         <section className="header" onClick={() => onContentNoteClick(note)}>
-//             <p>{note.info.title}</p>
-//         </section>
-//         <section className="main" onClick={() => onContentNoteClick(note)}>
-//             <p>{note.info.txt}</p>
-//         </section>
-//         <section className="footer">
-//             <NotePreviewToolBar note={note} onRemoveNote={onRemoveNote} />
-//         </section>
-//         <section className="outerBtns">
-//             <button className="btn selected-note-btn fa-solid fa-circle-check"></button>
-//         </section>
-//         <button className="btn pin-note-btn fa-solid fa-thumbtack"></button>
-//     </section>

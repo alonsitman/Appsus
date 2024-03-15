@@ -35,7 +35,13 @@ export function NoteIndex() {
 
 
     function onRemoveNote(noteId) {
-        noteService.removeNote(noteId)
+        const elLi = document.getElementById(`li-${noteId}`);
+        console.log('elli', elLi)
+        if(elLi){
+            elLi.classList.add('animate__backOutRight', 'animate__animated')
+        }
+        setTimeout(() => {
+            noteService.removeNote(noteId)
             .then(() => {
                 setNotes((prevNotes) => prevNotes.filter(note => note.id !== noteId))
                 console.log(`Note ${noteId} has been removed successfuly`)
@@ -43,6 +49,7 @@ export function NoteIndex() {
             .catch((err) => {
                 console.log(`Note ${noteId} removed failed`)
             })
+        },100)
     }
 
 
@@ -88,7 +95,7 @@ export function NoteIndex() {
 
 
     if (!notes) return <React.Fragment>loading...</React.Fragment>
-    return <section className="note-index">
+    return <section className="note-index animate__animated animate__bounceInDown">
         <NoteCreator/>
         <NoteList notes={notes} onRemoveNote={onRemoveNote} onContentNoteClick={onContentNoteClick} />
         {noteContentClicked &&
@@ -99,6 +106,8 @@ export function NoteIndex() {
                     noteContentClicked={noteContentClicked}
                     currentEditedNoteValues={currentEditedNoteValues}
                     handleEditorChange={handleEditorChange}
+                    onRemoveNote={onRemoveNote}
+                    setNoteContentClicked = {setNoteContentClicked}
                 />
             </div>
         }
