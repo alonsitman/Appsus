@@ -11,6 +11,8 @@ export function NoteCreator({ handleCreatorChange, creatorRef, noteCreatorClicke
         setCreatedNoteEmpty(isTitleEmpty && isTxtEmpty);
     }, [titleValue, txtValue, setCreatedNoteEmpty]);
 
+
+
     return <section ref={creatorRef}  className={noteCreatorClicked ? "note-creator" : ""}>
         <form className="note-creator-preview">
             {noteCreatorClicked && (<textarea
@@ -27,6 +29,7 @@ export function NoteCreator({ handleCreatorChange, creatorRef, noteCreatorClicke
                 className={`main${noteCreatorClicked ? '' : ' main-active'}`}
                 name="txt"
                 type="text"
+                value={noteCreatorClicked ? txtValue : ''}
                 placeholder="Take a note..."
                 onChange={(event) => {
                     handleCreatorChange(event)

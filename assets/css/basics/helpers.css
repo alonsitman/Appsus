@@ -48,3 +48,7 @@
     from { background-color: rgba(0, 0, 0, 0); } 
     to { background-color: rgba(0, 0, 0, 0.5); } 
 }
+
+.note-just-added {
+    animation:  animate__backInRight 2s;
+}

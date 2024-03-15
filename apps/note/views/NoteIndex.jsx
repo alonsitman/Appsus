@@ -4,6 +4,7 @@ import { NoteList } from "../cmps/NoteList.jsx"
 import { NoteEditor } from "../cmps/NoteEditor.jsx"
 import { NoteCreator } from "../cmps/NoteCreator.jsx"
 import { showSuccessMsg, showErrorMsg } from "../../../services/event-bus.service.js"
+import { utilService } from "../../../services/util.service.js"
 
 export function NoteIndex() {
     const [notes, setNotes] = useState(null)
@@ -12,6 +13,7 @@ export function NoteIndex() {
     const [currentEditedNoteValues, setCurrentEditedNoteValues] = useState(noteService.getEmptyNote())
     const [currentCreatedNoteValues, setCurrentCreatedNoteValues] = useState(noteService.getEmptyNote())
     const [isCreatedNoteEmpty, setCreatedNoteEmpty] = useState(true)
+    const [isNoteJustAdded, setIsNoteJustAdded] = useState(true)
 
 
     const editorRef = useRef(null)
@@ -24,15 +26,16 @@ export function NoteIndex() {
     useEffect(() => {
         document.addEventListener('mousedown', handleClicks)
     }, [])
-
-
+    
     useEffect(() => {
         if (!isCreatedNoteEmpty && !noteCreatorClicked) {
             console.log('the values:', currentCreatedNoteValues);
-            onSaveNote(currentCreatedNoteValues);
+            onCreateNote(currentCreatedNoteValues)
+            setIsNoteJustAdded(prev => !prev)
+            console.log('asdasdasdasdasdasdasd',isNoteJustAdded)
+
         }
     }, [isCreatedNoteEmpty, noteCreatorClicked]);
-
 
     function loadNotes() {
         noteService.query()
@@ -73,6 +76,17 @@ export function NoteIndex() {
                     setNotes((prevNotes) => prevNotes.map((note) => note.id === newNote.id ? { ...note, ...newNote } : note))
                 })
         }
+    }
+
+    function onCreateNote(newNote) {
+        console.log('Enter onCreateNote!!!!!!!!!!!!!!!!!! ', newNote)
+        if (newNote) {
+            noteService.saveNote(newNote)
+                .then(() => {
+                    loadNotes()
+                })
+        }
+
     }
 
 
@@ -123,7 +137,8 @@ export function NoteIndex() {
             setNoteCreatorClicked={setNoteCreatorClicked}
             setCreatedNoteEmpty={setCreatedNoteEmpty}
         />
-        <NoteList notes={notes} onRemoveNote={onRemoveNote} onContentNoteClick={onContentNoteClick} animate={!noteContentClicked} />
+        <NoteList notes={notes} onRemoveNote={onRemoveNote} onContentNoteClick={onContentNoteClick} 
+                  animate={!noteContentClicked} isNoteJustAdded={isNoteJustAdded} setIsNoteJustAdded={setIsNoteJustAdded}/>
         {noteContentClicked &&
             <div>
                 <div className="overlay"></div>
