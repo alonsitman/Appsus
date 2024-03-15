@@ -49,7 +49,7 @@ export function NoteIndex() {
             .catch((err) => {
                 console.log(`Note ${noteId} removed failed`)
             })
-        },300)
+        },1000)
     }
 
 
