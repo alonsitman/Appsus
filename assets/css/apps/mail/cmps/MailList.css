@@ -15,10 +15,15 @@
     cursor: pointer;
 }
 
-.mail-list li:last-child {
-    /* border-bottom: 1px solid #ddd; */
+.criteria {
+    display: flex;
+    justify-content: space-around;
+
+    padding: 20px;
+    background-color: white;
+
+    color: #0B57D0;
 }
 
-.remove-btn {
-    /* justify-self: end; */
-}
+
+

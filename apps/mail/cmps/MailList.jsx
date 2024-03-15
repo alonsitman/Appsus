@@ -22,6 +22,11 @@ export function MailList({mails, onRemoveMail}) {
     return <div className="mail-list">
         {selectedMail ? 
             <MailDetails mail={selectedMail} /> : (<div>
+        <div className="criteria">
+            <div><span className=""></span>  Primary</div>
+            <div><span className=""></span>  Promotions</div>
+            <div><span className="socialIcon"></span>  Social</div>
+        </div>
         <ul>
             {
                 mails.map(mail => <li key={mail.id} >

@@ -103,3 +103,9 @@
     content: "\f044"; 
     font-weight: solid;
 }
+
+.socialIcon::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f007"; 
+    font-weight: solid;
+}
