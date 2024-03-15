@@ -2,11 +2,6 @@ import { NoteEditorToolBar } from "./NoteEditorToolBar.jsx"
 export function NoteEditor({ editorRef, noteContentClicked, currentEditedNoteValues, handleEditorChange, onRemoveNote, setNoteContentClicked }) {
 
 
-    if (noteContentClicked === false) {
-        console.log('Not is clicked === false')
-
-    }
-
     const formStyle = {
         backgroundColor: currentEditedNoteValues.style.backgroundColor
     }
