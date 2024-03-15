@@ -13,7 +13,7 @@ export function NoteCreator({ handleCreatorChange, creatorRef, noteCreatorClicke
 
 
 
-    return <section ref={creatorRef} className={(noteCreatorClicked ? "note-creator" : "") + (isNoteJustAdded ? ' animate__animated animate__rollIn' : '')}>
+    return <section ref={creatorRef} className={(noteCreatorClicked ? "note-creator" : "") + (isNoteJustAdded ? ' animate__animated animate__zoomInDown' : '')}>
         <form className="note-creator-preview">
             {noteCreatorClicked && (<textarea
                 className="header"
