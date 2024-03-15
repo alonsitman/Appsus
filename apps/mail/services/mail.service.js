@@ -2,9 +2,26 @@ import { utilService } from '../../../services/util.service.js'
 import { storageService } from '../../../services/async-storage.service.js'
 
 const MAIL_KEY = 'mailDB'
+const loggedinUser = {
+    email: 'user@appsus.com',
+    fullname: 'Mahatma Appsus'
+}
+
+const filterBy = {
+    status: 'inbox/sent/trash/draft',
+    txt: 'puki', // no need to support complex text search
+    isRead: true,
+    isStared: false,
+    isSnoozed: false,
+    isSent: false,
+    isTrash: false,
+    isDraft: false,
+    lables: ['important', 'romantic'] // has any of the labels
+}
 
 //For debug ONLY
 _createMails()
+////////////////
 
 export const mailService = {
     query,

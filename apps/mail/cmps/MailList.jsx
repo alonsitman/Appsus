@@ -31,9 +31,6 @@ export function MailList({mails, onRemoveMail}) {
             {
                 mails.map(mail => <li key={mail.id} >
                     <MailPreview mail={mail} onClick={ () => handleMailClick(mail.id)}/>
-                    <div className="mail-actions">
-                        <button className="btn remove-btn trashIcon" onClick={() => onRemoveMail(mail.id)}></button>
-                    </div>
                 </li>)
             }
 
