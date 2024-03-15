@@ -53,7 +53,18 @@ export function NoteIndex() {
         const elLi = document.getElementById(`li-${noteId}`);
         console.log('elli', elLi)
         if (elLi) {
-            elLi.classList.add('animate__backOutRight', 'animate__animated')
+            const randomNumber = utilService.getRandomIntInclusive(0,2)
+            const animations = [
+                'animate__backOutRight',
+                'animate__hinge',
+                'animate__bounceOutDown',
+                ]
+            const animationClass = animations[randomNumber];
+            elLi.classList.add('animate__animated', animationClass)
+            let timeOut = 1000; 
+            if (animationClass === 'animate__hinge') {
+                timeOut = 2000; 
+            }
         }
         setTimeout(() => {
             noteService.removeNote(noteId)
@@ -64,7 +75,7 @@ export function NoteIndex() {
                 .catch((err) => {
                     console.log(`Note ${noteId} removed failed`)
                 })
-        }, 1000)
+        }, timeOut)
     }
 
 
