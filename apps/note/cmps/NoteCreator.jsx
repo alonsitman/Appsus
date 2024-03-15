@@ -1,6 +1,9 @@
+
 import { NoteCreatorToolBar } from "./NoteCreatorToolBar.jsx"
 
-export function NoteCreator({ handleCreatorChange, currentEditedNoteValues, creatorRef }) {
+export function NoteCreator({ handleCreatorChange, creatorRef }) {
+    
+
     return <section ref={creatorRef} className="note-creator">
         <form className="note-creator-preview">
             <textarea

@@ -11,6 +11,7 @@ export function NoteIndex() {
     const [currentEditedNoteValues, setCurrentEditedNoteValues] = useState(noteService.getEmptyNote())
     const [currentCreatedNoteValues, setCurrentCreatedNoteValues] = useState(noteService.getEmptyNote())
 
+
     const editorRef = useRef(null)
     const creatorRef = useRef(null)
 
@@ -64,7 +65,6 @@ export function NoteIndex() {
             noteService.saveNote(newNote)
                 .then(() => {
                     setNotes((prevNotes) => prevNotes.map((note) => note.id === newNote.id ? { ...note, ...newNote } : note))
-
                 })
         }
     }
@@ -90,19 +90,15 @@ export function NoteIndex() {
     }
 
     function handleClickOutsideCreator(event) {
-        if (creatorRef.current && !creatorRef.current.contains(event.target)) {
-            console.log(currentCreatedNoteValues)
-            console.log('Moving to function Creating note!!')
-            onSaveNote(currentCreatedNoteValues)
-
-            //TODO rerender the note
-        }
+            if (creatorRef.current && !creatorRef.current.contains(event.target)) {
+                onSaveNote(currentCreatedNoteValues)
+            }
     }
 
     const handleCreatorChange = ({ target }) => {
         console.log('Enter handleCreatorChange ', target.value)
         setCurrentCreatedNoteValues(prevCreatedNoteValues =>
-            ({ ...prevCreatedNoteValues, info: { ...prevCreatedNoteValues.info, [target.name] : target.value } }))
+            ({ ...prevCreatedNoteValues, info: { ...prevCreatedNoteValues.info, [target.name]: target.value } }))
         console.log('currentValues', currentCreatedNoteValues)
 
     }
@@ -119,7 +115,7 @@ export function NoteIndex() {
     return <section className="note-index">
         <NoteCreator
             creatorRef={creatorRef}
-            handleCreatorChange ={handleCreatorChange }
+            handleCreatorChange={handleCreatorChange}
             currentEditedNoteValues={currentEditedNoteValues}
         />
         <NoteList notes={notes} onRemoveNote={onRemoveNote} onContentNoteClick={onContentNoteClick} animate={!noteContentClicked} />
