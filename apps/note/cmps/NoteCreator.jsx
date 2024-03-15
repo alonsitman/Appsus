@@ -4,18 +4,12 @@ import { NoteCreatorToolBar } from "./NoteCreatorToolBar.jsx"
 export function NoteCreator({ handleCreatorChange, creatorRef, noteCreatorClicked, setNoteCreatorClicked, setCreatedNoteEmpty }) {
     const [titleValue, setTitleValue] = useState('')
     const [txtValue, setTxtValue] = useState('')
-
-    console.log('asdasdsadasdasdas', titleValue)
-    console.log('asdasdsadasdasdas', txtValue)
-
+    
     useEffect(() => {
-        if (titleValue.trim() === '' && txtValue.trim() === '') {
-            setCreatedNoteEmpty(true);
-        } else {
-            setCreatedNoteEmpty(false);
-        }
+        const isTitleEmpty = titleValue.trim() === '';
+        const isTxtEmpty = txtValue.trim() === '';
+        setCreatedNoteEmpty(isTitleEmpty && isTxtEmpty);
     }, [titleValue, txtValue, setCreatedNoteEmpty]);
-
 
     return <section ref={creatorRef}  className={noteCreatorClicked ? "note-creator" : ""}>
         <form className="note-creator-preview">

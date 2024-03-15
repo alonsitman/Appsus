@@ -26,6 +26,14 @@ export function NoteIndex() {
     }, [])
 
 
+    useEffect(() => {
+        if (!isCreatedNoteEmpty && !noteCreatorClicked) {
+            console.log('the values:', currentCreatedNoteValues);
+            onSaveNote(currentCreatedNoteValues);
+        }
+    }, [isCreatedNoteEmpty, noteCreatorClicked]);
+
+
     function loadNotes() {
         noteService.query()
             .then((notes) => {
@@ -56,9 +64,9 @@ export function NoteIndex() {
         }, 1000)
     }
 
-    
+
     function onSaveNote(newNote) {
-        console.log('Enter onSaveNote ', newNote)
+        console.log('Enter onSaveNote!!!!!!!!!!!!!!!!!! ', newNote)
         if (newNote) {
             noteService.saveNote(newNote)
                 .then(() => {
@@ -80,24 +88,17 @@ export function NoteIndex() {
     function handleClicks(event) {
         console.log('Enter handleClicks')
         if (editorRef.current && !editorRef.current.contains(event.target)) {
-            console.log(currentEditedNoteValues)
-            setNoteContentClicked(false)
-            loadNotes(currentEditedNoteValues.id)
-          
+            setNoteContentClicked(false);
+            loadNotes(currentEditedNoteValues.id);
         }
-        if({...currentCreatedNoteValues} != {...noteService.getEmptyNote()}){
-            console.log('ender created note  handle Click')
-            if (creatorRef.current && !creatorRef.current.contains(event.target)) {
-                setNoteCreatorClicked(false)    
-            }
+        if (creatorRef.current && !creatorRef.current.contains(event.target)) {
+            setNoteCreatorClicked(false);
         }
     }
 
     const handleCreatorChange = ({ target }) => {
-        console.log('Enter handleCreatorChange ', target.value)
         setCurrentCreatedNoteValues(prevCreatedNoteValues =>
             ({ ...prevCreatedNoteValues, info: { ...prevCreatedNoteValues.info, [target.name]: target.value } }))
-        console.log('currentValues', currentCreatedNoteValues)
 
     }
 
@@ -107,11 +108,10 @@ export function NoteIndex() {
             ({ ...prevEditedNoteValues, info: { ...prevEditedNoteValues.info, [target.name]: target.value } }))
 
         onSaveNote(currentEditedNoteValues)
-        console.log('currentValues', currentEditedNoteValues)
     }
 
 
-    console.log('is created not empty string',isCreatedNoteEmpty)
+    console.log('is created not empty string', isCreatedNoteEmpty)
 
     if (!notes) return <React.Fragment>loading...</React.Fragment>
     return <section className="note-index">
@@ -119,9 +119,9 @@ export function NoteIndex() {
             creatorRef={creatorRef}
             handleCreatorChange={handleCreatorChange}
             currentEditedNoteValues={currentEditedNoteValues}
-            noteCreatorClicked = {noteCreatorClicked}
-            setNoteCreatorClicked = {setNoteCreatorClicked}
-            setCreatedNoteEmpty = {setCreatedNoteEmpty}
+            noteCreatorClicked={noteCreatorClicked}
+            setNoteCreatorClicked={setNoteCreatorClicked}
+            setCreatedNoteEmpty={setCreatedNoteEmpty}
         />
         <NoteList notes={notes} onRemoveNote={onRemoveNote} onContentNoteClick={onContentNoteClick} animate={!noteContentClicked} />
         {noteContentClicked &&
