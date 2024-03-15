@@ -1,30 +1,35 @@
 
 import { NoteCreatorToolBar } from "./NoteCreatorToolBar.jsx"
 
-export function NoteCreator({ handleCreatorChange, creatorRef }) {
-    
+export function NoteCreator({ handleCreatorChange, creatorRef, noteCreatorClicked, setNoteCreatorClicked }) {
 
-    return <section ref={creatorRef} className="note-creator">
+
+    return <section ref={creatorRef}  className={noteCreatorClicked ? "note-creator" : ""}>
         <form className="note-creator-preview">
-            <textarea
+            {noteCreatorClicked && (<textarea
                 className="header"
                 name="title"
                 type="text"
                 placeholder="Title"
                 onChange={handleCreatorChange}
-            />
+            />)}
             <textarea
-                className="main"
+                className={`main${noteCreatorClicked ? '' : ' main-active'}`}
                 name="txt"
                 type="text"
                 placeholder="Take a note..."
                 onChange={handleCreatorChange}
+                onClick={() => setNoteCreatorClicked(true)}
             />
         </form>
-        <section className="footer">
-            <NoteCreatorToolBar />
-        </section>
-        <button className="btn pin-note-btn fa-solid fa-thumbtack"></button>
+        {noteCreatorClicked && (
+            <React.Fragment>
+                <section className="footer">
+                    <NoteCreatorToolBar />
+                </section>
+                <button className="btn pin-note-btn fa-solid fa-thumbtack"></button>
+            </React.Fragment>
+        )}
     </section>
 }
 

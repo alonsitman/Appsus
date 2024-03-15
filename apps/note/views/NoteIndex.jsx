@@ -8,6 +8,7 @@ import { showSuccessMsg, showErrorMsg } from "../../../services/event-bus.servic
 export function NoteIndex() {
     const [notes, setNotes] = useState(null)
     const [noteContentClicked, setNoteContentClicked] = useState(false)
+    const [noteCreatorClicked, setNoteCreatorClicked] = useState(false)
     const [currentEditedNoteValues, setCurrentEditedNoteValues] = useState(noteService.getEmptyNote())
     const [currentCreatedNoteValues, setCurrentCreatedNoteValues] = useState(noteService.getEmptyNote())
 
@@ -20,12 +21,8 @@ export function NoteIndex() {
     }, [])
 
     useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside)
+        document.addEventListener('mousedown', handleClicks)
     }, [])
-
-    useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutsideCreator)
-    })
 
 
     function loadNotes() {
@@ -76,23 +73,21 @@ export function NoteIndex() {
         setNotes((prevNotes => prevNotes.filter((note) => note.id != selectedNote.id)))
         setNoteContentClicked(true)
         setCurrentEditedNoteValues({ ...selectedNote })
-        //TODO remove the render of the note
+        
     }
 
-    function handleClickOutside(event) {
-        console.log('Enter handleClickOutside')
+
+    function handleClicks(event) {
+        console.log('Enter handleClicks')
         if (editorRef.current && !editorRef.current.contains(event.target)) {
             console.log(currentEditedNoteValues)
             setNoteContentClicked(false)
             loadNotes(currentEditedNoteValues.id)
-            //TODO rerender the note
+          
         }
-    }
-
-    function handleClickOutsideCreator(event) {
-            if (creatorRef.current && !creatorRef.current.contains(event.target)) {
-                onSaveNote(currentCreatedNoteValues)
-            }
+        if (creatorRef.current && !creatorRef.current.contains(event.target)) {
+            setNoteCreatorClicked(false)
+        }
     }
 
     const handleCreatorChange = ({ target }) => {
@@ -102,6 +97,8 @@ export function NoteIndex() {
         console.log('currentValues', currentCreatedNoteValues)
 
     }
+
+
     const handleEditorChange = ({ target }) => {
         setCurrentEditedNoteValues(prevEditedNoteValues =>
             ({ ...prevEditedNoteValues, info: { ...prevEditedNoteValues.info, [target.name]: target.value } }))
@@ -117,6 +114,8 @@ export function NoteIndex() {
             creatorRef={creatorRef}
             handleCreatorChange={handleCreatorChange}
             currentEditedNoteValues={currentEditedNoteValues}
+            noteCreatorClicked = {noteCreatorClicked}
+            setNoteCreatorClicked = {setNoteCreatorClicked}
         />
         <NoteList notes={notes} onRemoveNote={onRemoveNote} onContentNoteClick={onContentNoteClick} animate={!noteContentClicked} />
         {noteContentClicked &&

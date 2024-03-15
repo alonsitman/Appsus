@@ -23,19 +23,43 @@
     bottom: 0;
 }
 
-
-@media (max-width: 720px) {
-    .note-creator {
-        margin-left: 0.9375em;
-        margin-right: 0.9375em;
-        width: auto; /* Adjust width to available space */
-        max-width: 37.5em;
-    }
-}
-
 .note-creator .pin-note-btn{
     position: absolute;
     top: 0;
     right: 0;
     transform: translate(-25%, 5%);
+}
+
+
+.main-active{
+    position: relative;
+    width: 37.5em; 
+    margin: 0 auto;
+    max-width: 100%; 
+}
+
+.main-active{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    background-color: white;
+    border-radius: 2em;
+    transition: transform 0.3s ease-in-out;
+    padding: 16px;
+}
+
+
+@media (max-width: 720px) {
+    .note-creator {
+        margin-left: 0.9375em;
+        margin-right: 0.9375em;
+        width: auto; 
+        max-width: 37.5em;
+    }
+}
+
+@media (max-width: 720px) {
+    .main-active {
+        margin-left: 0.9375em;
+        margin-right: 0.9375em;
+        width: auto; 
+    }
 }
