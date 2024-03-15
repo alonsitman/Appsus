@@ -1,0 +1,28 @@
+.note-creator {
+    width: 37.5em; 
+    margin: 0 auto;
+    max-width: 100%; 
+}
+
+
+
+/* Style */
+.note-creator {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    background-color: white;
+    border-radius: 2em;
+    transition: transform 0.3s ease-in-out;
+}
+
+.note-creator{
+    padding: 16px;
+}
+
+@media (max-width: 720px) {
+    .note-creator {
+        margin-left: 0.9375em;
+        margin-right: 0.9375em;
+        width: auto; /* Adjust width to available space */
+        max-width: 37.5em;
+    }
+}

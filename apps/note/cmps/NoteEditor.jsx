@@ -16,7 +16,7 @@ export function NoteEditor({ editorRef, noteContentClicked,currentEditedNoteValu
                     type="text" 
                     placeholder="Title" 
                     onChange={handleEditorChange} 
-                    style={{ minHeight: '50px', height: 'auto', overflowY: 'auto' }} 
+                    // style={{ minHeight: '50px', height: 'auto', overflowY: 'auto' }} 
                 />
                 <textarea 
                     className="main" 
@@ -25,7 +25,7 @@ export function NoteEditor({ editorRef, noteContentClicked,currentEditedNoteValu
                     type="text" 
                     placeholder="Note" 
                     onChange={handleEditorChange} 
-                    style={{ minHeight: '50px', height: 'auto', overflowY: 'auto' }} 
+                    // style={{ minHeight: '50px', height: 'auto', overflowY: 'auto' }} 
                 />
             </form>
         </section>
