@@ -7,6 +7,10 @@ export function MailPreview({mail, onClick}) {
 
         <h4 className="sender">{senderName}</h4>
         <h4 className="subject">{mail.subject}</h4>
+        <div className="mail-actions">
+            <button className="btn remove-btn trashIcon" onClick={() => onRemoveMail(mail.id)}></button>
+        </div>
+        
     </article>
 }
 

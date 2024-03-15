@@ -15,6 +15,10 @@
     cursor: pointer;
 }
 
+.mail-list li:hover {
+    border: 2px solid;
+}
+
 .criteria {
     display: flex;
     justify-content: space-around;
