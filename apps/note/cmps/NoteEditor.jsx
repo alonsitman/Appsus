@@ -1,4 +1,5 @@
 import { NoteEditorToolBar } from "./NoteEditorToolBar.jsx"
+
 export function NoteEditor({ editorRef, noteContentClicked, currentEditedNoteValues, handleEditorChange, onRemoveNote, setNoteContentClicked }) {
 
 

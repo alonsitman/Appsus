@@ -22,6 +22,7 @@
 @import './apps/note/outScreen/NoteEditorPreview.css';
 @import './apps/note/cmps/NoteCreator.css';
 @import './apps/note/cmps/NoteCreatorToolBar.css';
+@import './apps/note/cmps/NoteCreatorPreview.css';
 
 /* Cmps */
 
