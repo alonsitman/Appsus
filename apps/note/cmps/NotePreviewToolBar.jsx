@@ -2,7 +2,8 @@ const  { useState } = React
 import { ColorPlate } from "./ColorPlate.jsx"
 
 
-export function NotePreviewToolBar({ note, onRemoveNote, setColorPicker, onChangeColor }) {
+export function NotePreviewToolBar({ note, onRemoveNote, setColorPicker, onChangeColor, onDuplicateNote}) {
+    console.log(onDuplicateNote)
     const [isColorPlateOpen, setIsColorPlateOpen] = useState(false)
     const handleColorPlateClick = () => {
         setIsColorPlateOpen(prev => !prev)
@@ -16,7 +17,7 @@ export function NotePreviewToolBar({ note, onRemoveNote, setColorPicker, onChang
             </div>
             <button className="btn archive-btn archiveIcon"></button>
             <button className="btn add-image-btn imageIcon"></button>
-            <button className="btn duplicate-btn duplicateIcon"></button>
+            <button className="btn duplicate-btn duplicateIcon" onClick={() => onDuplicateNote(note)}></button>
         </section>
     );
 }

@@ -117,6 +117,15 @@ export function NoteIndex() {
 
     }
 
+    function onDuplicateNote(note) {
+        console.log('duplicatingNote')
+        console.log('the Note is: ', note)
+        const newNote = {...note}
+        console.log('the new note', newNote)
+        newNote.id = ''
+        onCreateNote(newNote)
+    }
+
 
     function onContentNoteClick(event, selectedNote) {
         console.log('Enter onContentNoteClick', selectedNote)
@@ -170,7 +179,7 @@ export function NoteIndex() {
             isNoteJustAdded={isNoteJustAdded}
         />
         <NoteList notes={notes} onRemoveNote={onRemoveNote} onContentNoteClick={onContentNoteClick}
-            animate={!noteContentClicked} setColorPicker={setColorPicker} onChangeColor={onChangeColor} />
+            animate={!noteContentClicked} setColorPicker={setColorPicker} onChangeColor={onChangeColor} onDuplicateNote={onDuplicateNote} />
         {noteContentClicked &&
             <div>
                 <div className="overlay"></div>

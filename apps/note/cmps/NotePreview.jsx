@@ -2,7 +2,7 @@ import { NotePreviewToolBar } from "./NotePreviewToolBar.jsx"
 
     
 
-export function NotePreview({ note, onRemoveNote, onContentNoteClick, setColorPicker, onChangeColor}) {
+export function NotePreview({ note, onRemoveNote, onContentNoteClick, setColorPicker, onChangeColor, onDuplicateNote}) {
     return <section className="note-preview">
         <section className="header" onClick={(event) => onContentNoteClick(event,note)}>
             <p>{note.info.title}</p>
@@ -11,7 +11,7 @@ export function NotePreview({ note, onRemoveNote, onContentNoteClick, setColorPi
             <p>{note.info.txt}</p>
         </section>
         <section className="footer">
-            <NotePreviewToolBar note={note} onRemoveNote={onRemoveNote} setColorPicker={setColorPicker} onChangeColor={onChangeColor}/>
+            <NotePreviewToolBar note={note} onRemoveNote={onRemoveNote} setColorPicker={setColorPicker} onChangeColor={onChangeColor} onDuplicateNote={onDuplicateNote}/>
         </section>
         <section className="outerBtns">
             <button className="btn selected-note-btn fa-solid fa-circle-check"></button>
