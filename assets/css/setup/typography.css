@@ -115,3 +115,34 @@
     content: "\f002"; 
     font-weight: solid;
 }
+
+
+.noteIcon::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f328"; 
+    font-weight: regular;
+}
+
+.reminderIcon::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f0f3"; 
+    font-weight: regular;
+}
+
+.labelIcon::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f02e"; 
+    font-weight: regular;
+}
+
+.editLabelsIcon::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f044"; 
+    font-weight: regular;
+}
+
+.archiveIcon::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f07b"; 
+    font-weight: regular;
+}

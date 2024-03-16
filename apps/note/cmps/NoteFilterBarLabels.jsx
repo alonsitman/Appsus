@@ -1,7 +1,9 @@
-
-export function NoteFilterBarLabels() {
+import { useState } from 'react';
+export function NoteFilterBarLabels({isHovered}) {
     return <section class="labels">
-        <button class=" btn label-btn"></button>
-        <p>Personal</p>
+        <section className=" bar-section label">
+            <button class=" btn label-btn labelIcon"></button>
+            {isHovered && <p>Label</p>}
+        </section>
     </section>
 }

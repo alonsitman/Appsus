@@ -17,7 +17,6 @@
 /* @import './apps/note/views/NoteIndex.css'; */
 @import './apps/note/cmps/NoteList.css';
 @import './apps/note/cmps/NotePreview.css';
-@import './apps/note/cmps/NotePreviewToolBar.css';
 @import './apps/note/outScreen/NoteEditor.css';
 @import './apps/note/outScreen/NoteEditorPreview.css';
 @import './apps/note/cmps/NoteCreator.css';
@@ -25,6 +24,7 @@
 @import './apps/note/cmps/NoteCreatorPreview.css';
 @import './apps/note/cmps/ColorPlate.css';
 @import './apps/note/cmps/NoteFilterBar.css';
+@import './apps/note/cmps/NoteFilterBarPreview.css';
 
 /* Cmps */
 

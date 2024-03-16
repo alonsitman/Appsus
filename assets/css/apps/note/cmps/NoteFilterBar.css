@@ -1,10 +1,26 @@
-.note-filter-bar{
+.note-filter-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
     position: fixed;
     left: 0;
-    width: 280px;
+    width: auto;
     background-color: white;
-    top: 0.1;
-    height: 80vh;
+    top: 30%;
     z-index: 5000;
     box-shadow: 2px 0 4px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    border-radius: 1em;
+}
+
+.bar-section:hover {
+    cursor: pointer;
+    background-color: rgba(128, 128, 128, 0.2);
+    border-radius: 1em;
+} 
+
+.note-filter-bar-preview {
+    width: 100%;
+    flex-grow: 1; /* Fill up remaining space */
 }
