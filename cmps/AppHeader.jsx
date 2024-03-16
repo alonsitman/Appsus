@@ -15,7 +15,7 @@ export function AppHeader() {
         </Link>
 
         <div className="search-bar">
-            <button className="btn-search"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <button className="btn-search"><i className="fa-solid fa-magnifying-glass"></i></button>
             <input type="text"
                 onChange={handleSearchChange}
                 placeholder="Search" />
