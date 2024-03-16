@@ -24,6 +24,7 @@
 @import './apps/note/cmps/NoteCreatorToolBar.css';
 @import './apps/note/cmps/NoteCreatorPreview.css';
 @import './apps/note/cmps/ColorPlate.css';
+@import './apps/note/cmps/NoteFilterBar.css';
 
 /* Cmps */
 

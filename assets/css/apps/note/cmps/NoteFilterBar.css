@@ -1,0 +1,9 @@
+.note-filter-bar{
+    position: fixed;
+    left: 0;
+    width: 280px;
+    background-color: white;
+    margin: 0 auto;
+    height: 100vh;
+    z-index: 5000;
+}
