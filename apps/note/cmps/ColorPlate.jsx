@@ -8,7 +8,7 @@ export function ColorPlate({ setColorPicker, note, onChangeColor }) {
                 <button className="btn" key={`color-${color}`} id={`color-${color}`} style={{ backgroundColor: color }}
                     onClick={() => {
                         setColorPicker(color)
-                        onChangeColor(note)
+                        onChangeColor(note, color)
                     }}>
                 </button>
             ))}

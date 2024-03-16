@@ -79,13 +79,12 @@ export function NoteIndex() {
         }
     }
 
-    function onChangeColor(noteToModify) {
+    function onChangeColor(noteToModify, color) {
         console.log('note iam here', noteToModify.id)
-    
         noteService.getNote(noteToModify.id)
         .then((note)=>{
             console.log('got note',note)
-            const modifyNote = {...note, style : {...note.style, ['backgroundColor'] : colorPicker}}
+            const modifyNote = {...note, style : {...note.style, ['backgroundColor'] : color}}
             onSaveNote(modifyNote)
         })
     }
