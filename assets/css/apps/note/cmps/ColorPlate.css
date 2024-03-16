@@ -4,4 +4,16 @@
 
 .color-plate{
     position: absolute;
+    display: flex;
+    transform: translate(-50%, 10%);
+    background-color: white;
+    border-radius: 1em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    z-index: 4000;
+}
+
+.color-plate button{
+    width: 1.75em;
+    height: 1.75em;
+    border-radius: 2em;
 }
