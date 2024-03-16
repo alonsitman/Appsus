@@ -1,0 +1,51 @@
+.note-filter-bar-preview{
+   flex-grow: 1;
+}
+
+
+.note-filter-bar-preview .label,
+.note-filter-bar-preview .trash,
+.note-filter-bar-preview .archive,
+.note-filter-bar-preview .edit-labels,
+.note-filter-bar-preview .reminder,
+.note-filter-bar-preview .notes-main{
+    display: flex;
+}
+
+.note-filter-bar-preview .label > *,
+.note-filter-bar-preview .trash > *,
+.note-filter-bar-preview .archive > *, 
+.note-filter-bar-preview .edit-labels > *,
+.note-filter-bar-preview .reminder > *, 
+.note-filter-bar-preview .notes-main > *{
+    margin-left: 4px;
+}
+
+.note-filter-bar-preview .reminder > button,
+.note-filter-bar-preview .edit-labels > button,
+.note-filter-bar-preview .archive > button,
+.note-filter-bar-preview .notes-main > button ,
+.note-filter-bar-preview .trash > button,
+.note-filter-bar-preview .label > button{
+    scale: 1.2;
+    padding-right: 18px;
+    padding-left: 18px;
+    background-color: transparent;
+
+}
+
+.note-filter-bar-preview .reminder > p,
+.note-filter-bar-preview .edit-labels > p,
+.note-filter-bar-preview .archive > p,
+.note-filter-bar-preview .notes-main > p ,
+.note-filter-bar-preview .trash > p,
+.note-filter-bar-preview .label > p{
+    padding-right: 80px;
+}
+
+
+.note-filter-bar-preview .labels{
+    display: flex;
+    flex-direction: column;
+} 
+
