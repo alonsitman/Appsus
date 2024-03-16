@@ -9,17 +9,24 @@ import { mailService } from "../services/mail.service.js"
 
 
 export function MailIndex() {
-    const [mails, setMails] = useState()
-
+    const [filterBy, setFilterBy] = useState(useState(mailService.getDefaultFilter()))
+    const [mails, setMails] = useState([])
+    
     useEffect(() => {
         loadMails()
-    }, [])
+    }, [filterBy])
 
     function loadMails() {
-        mailService.query()
+        mailService.query(filterBy)
             .then((mails) => {
                 setMails(mails)
+                // console.log('filterBy:', filterBy)
             })
+    }
+
+    function onFilterChange(newFilterBy) {
+        setFilterBy(newFilterBy)
+        console.log('filterBy:', filterBy)
     }
 
     function onRemoveMail(mailId) {
@@ -40,9 +47,13 @@ export function MailIndex() {
         <MailCompose />
         <MailFilter 
             mails={mails}
+            filterBy={filterBy}
+            onFilterChange={onFilterChange}
         />       
         <MailList
             mails={mails}
+            // mails={filterMails}
+            // filterBy={filterBy}
             onRemoveMail={onRemoveMail}
         />
 
