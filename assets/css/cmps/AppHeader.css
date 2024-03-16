@@ -32,8 +32,8 @@ nav a.active {
     width: 400px;
     height: 46px;
     border-radius: 24px;
-    background-color: #f1f3f4;
-}
+    /* background-color: #f1f3f4; */
+    background-color: #dfe8f7;}
 
 .search-bar input{
     outline: none;

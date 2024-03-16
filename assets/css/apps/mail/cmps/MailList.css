@@ -1,7 +1,13 @@
 .mail-list {
     grid-area: 1 / 2 / -1 / -1;
-    
-    background-color: #F2F6FC;
+
+    border-radius: 20px;
+    background-color: white;
+    /* background-color: #F2F6FC; */
+}
+
+.mail-list ul {
+    padding: 0;
 }
 
 .mail-list li {
@@ -10,20 +16,28 @@
     justify-content: space-between;
 
     border-top: 1px solid #ddd;
-    padding: 10px 0;
+    padding: 10px;
     cursor: pointer;
 }
 
-.mail-list li:hover {
-    border: 2px solid;
+.mail-list li.read {
+    background-color: #F2F6FC;
 }
 
-.criteria {
+.mail-list li:hover {
+    border: 1px solid;
+}
+
+.mail-type {
     display: flex;
+    /* align-items: center; */
     justify-content: space-around;
 
+    border-bottom: 2px solid blue;
+    
+    height: 100%;
     padding: 20px;
-    background-color: white;
+    border-radius: 20px;
 
     color: #0B57D0;
 }

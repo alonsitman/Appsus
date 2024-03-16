@@ -4,6 +4,11 @@
 
 .mail-filter ul {
     list-style-type: none;
+    padding: 0;
+}
+
+.mail-filter ul li {
+    padding: 0 40px;
 }
 
 .mail-filter button {
@@ -15,8 +20,13 @@
 }
 
 .mail-filter .active {
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    background-color: lightblue;
-    width: 15%;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    
+    background-color: rgb(195, 220, 252);
+    width: 19%;
+}
+
+.mail-filter .btn-inbox,.btn-drafts {
+    font-weight: bold;
 }

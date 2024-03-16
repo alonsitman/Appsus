@@ -3,7 +3,7 @@ const { useState } = React
 import { mailService } from "../services/mail.service.js"
 
 export function MailFilter({mails}) {
-    const [activeFilter, setActiveFilter] = useState(mailService.getDefaultFilter())
+    const [activeFilter, setActiveFilter] = useState(mailService.getDefaultFilter().status)
     const unreadMails = mails.filter(mail => !mail.isRead)
     const unreadCount = unreadMails.length
 
@@ -16,7 +16,7 @@ export function MailFilter({mails}) {
         <ul>
             <li className={activeFilter === 'inbox' ? 'active' : ''}>
                 <span className="envelopeIcon"></span>
-                <button onClick={() => onFilterChange('inbox')}>Inbox <span>{unreadCount}</span></button>
+                <button className="btn-inbox" onClick={() => onFilterChange('inbox')}>Inbox <span>{unreadCount}</span></button>
             </li>
             <li className={activeFilter === 'starred' ? 'active' : ''}>
                 <span className="starIcon"></span>
@@ -36,7 +36,7 @@ export function MailFilter({mails}) {
             </li>
             <li className={activeFilter === 'drafts' ? 'active' : ''}>
                 <span className="fileIcon"></span>
-                <button onClick={() => onFilterChange('drafts')}>Drafts</button>
+                <button className="btn-drafts" onClick={() => onFilterChange('drafts')}>Drafts</button>
             </li>
         </ul>
     </section>

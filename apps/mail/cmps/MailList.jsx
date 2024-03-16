@@ -22,14 +22,14 @@ export function MailList({mails, onRemoveMail}) {
     return <div className="mail-list">
         {selectedMail ? 
             <MailDetails mail={selectedMail} /> : (<div>
-        <div className="criteria">
-            <div><span className=""></span>  Primary</div>
-            <div><span className=""></span>  Promotions</div>
-            <div><span className="socialIcon"></span>  Social</div>
+        <div className="mail-type">
+            <div className="primary"><span className=""></span>  Primary</div>
+            <div className="promotion"><span className=""></span>  Promotions</div>
+            <div className="social"><span className="socialIcon"></span>  Social</div>
         </div>
         <ul>
             {
-                mails.map(mail => <li key={mail.id} >
+                mails.map(mail => <li className={`${mail.isRead ? 'read' : 'unread'}`} key={mail.id} >
                     <MailPreview mail={mail} onClick={ () => handleMailClick(mail.id)}/>
                     <div className="mail-actions">
                         <button className="btn remove-btn trashIcon" onClick={() => onRemoveMail(mail.id)}></button>
