@@ -14,6 +14,7 @@ export function NoteIndex() {
     const [currentCreatedNoteValues, setCurrentCreatedNoteValues] = useState(noteService.getEmptyNote())
     const [isCreatedNoteEmpty, setCreatedNoteEmpty] = useState(true)
     const [isNoteJustAdded, setIsNoteJustAdded] = useState(true)
+    const [colorPicker, setColorPicker] = useState('')
 
 
     const editorRef = useRef(null)
@@ -135,8 +136,11 @@ export function NoteIndex() {
         onSaveNote(currentEditedNoteValues)
     }
 
+    
+
 
     console.log('is created not empty string', isCreatedNoteEmpty)
+    console.log('color picker', colorPicker)
 
     if (!notes) return <React.Fragment>loading...</React.Fragment>
     return <section className="note-index">
@@ -150,7 +154,7 @@ export function NoteIndex() {
             isNoteJustAdded={isNoteJustAdded}
         />
         <NoteList notes={notes} onRemoveNote={onRemoveNote} onContentNoteClick={onContentNoteClick}
-            animate={!noteContentClicked} />
+            animate={!noteContentClicked} setColorPicker={setColorPicker} />
         {noteContentClicked &&
             <div>
                 <div className="overlay"></div>
