@@ -32,7 +32,7 @@ export function NoteIndex() {
             console.log('the values:', currentCreatedNoteValues);
             onCreateNote(currentCreatedNoteValues)
             setIsNoteJustAdded(prev => !prev)
-            console.log('asdasdasdasdasdasdasd',isNoteJustAdded)
+            console.log('asdasdasdasdasdasdasd', isNoteJustAdded)
 
         }
     }, [isCreatedNoteEmpty, noteCreatorClicked]);
@@ -53,29 +53,29 @@ export function NoteIndex() {
         const elLi = document.getElementById(`li-${noteId}`);
         console.log('elli', elLi)
         if (elLi) {
-            const randomNumber = utilService.getRandomIntInclusive(0,2)
+            const randomNumber = utilService.getRandomIntInclusive(0, 2)
             const animations = [
                 'animate__backOutRight',
                 'animate__hinge',
                 'animate__bounceOutDown',
-                ]
+            ]
             const animationClass = animations[randomNumber];
             elLi.classList.add('animate__animated', animationClass)
-            let timeOut = 1000; 
+            let timeOut = 1000;
             if (animationClass === 'animate__hinge') {
-                timeOut = 2000; 
+                timeOut = 2000;
             }
+            setTimeout(() => {
+                noteService.removeNote(noteId)
+                    .then(() => {
+                        setNotes((prevNotes) => prevNotes.filter(note => note.id !== noteId))
+                        console.log(`Note ${noteId} has been removed successfuly`)
+                    })
+                    .catch((err) => {
+                        console.log(`Note ${noteId} removed failed`)
+                    })
+            }, timeOut)
         }
-        setTimeout(() => {
-            noteService.removeNote(noteId)
-                .then(() => {
-                    setNotes((prevNotes) => prevNotes.filter(note => note.id !== noteId))
-                    console.log(`Note ${noteId} has been removed successfuly`)
-                })
-                .catch((err) => {
-                    console.log(`Note ${noteId} removed failed`)
-                })
-        }, timeOut)
     }
 
 
@@ -147,10 +147,10 @@ export function NoteIndex() {
             noteCreatorClicked={noteCreatorClicked}
             setNoteCreatorClicked={setNoteCreatorClicked}
             setCreatedNoteEmpty={setCreatedNoteEmpty}
-            isNoteJustAdded={isNoteJustAdded} 
+            isNoteJustAdded={isNoteJustAdded}
         />
-        <NoteList notes={notes} onRemoveNote={onRemoveNote} onContentNoteClick={onContentNoteClick} 
-                  animate={!noteContentClicked}/>
+        <NoteList notes={notes} onRemoveNote={onRemoveNote} onContentNoteClick={onContentNoteClick}
+            animate={!noteContentClicked} />
         {noteContentClicked &&
             <div>
                 <div className="overlay"></div>
