@@ -80,6 +80,9 @@ export function NoteIndex() {
     }
 
     function onChangeColor(noteToModify, color) {
+        setCurrentEditedNoteValues(noteToModify)
+
+        currentEditedNoteValues.style.backgroundColor = color
         console.log('Note to modify', noteToModify)
         console.log('Current to modify',currentEditedNoteValues)
         setTimeout(()=>{

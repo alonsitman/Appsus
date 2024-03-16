@@ -28,7 +28,8 @@ export function NoteEditor({ editorRef, noteContentClicked, currentEditedNoteVal
                 />
             </form>
             <section className="footer">
-                <NoteEditorToolBar currentEditedNoteValues={currentEditedNoteValues} onRemoveNote={onRemoveNote} setNoteContentClicked ={setNoteContentClicked} onChangeColor={onChangeColor} />
+                <NoteEditorToolBar currentEditedNoteValues={currentEditedNoteValues} onRemoveNote={onRemoveNote} 
+                                   setNoteContentClicked ={setNoteContentClicked} onChangeColor={onChangeColor} />
             </section>
             <button className="btn pin-note-btn fa-solid fa-thumbtack"></button>
 
