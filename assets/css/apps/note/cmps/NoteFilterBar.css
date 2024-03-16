@@ -3,7 +3,8 @@
     left: 0;
     width: 280px;
     background-color: white;
-    margin: 0 auto;
-    height: 100vh;
+    top: 0.1;
+    height: 80vh;
     z-index: 5000;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.5);
 }
