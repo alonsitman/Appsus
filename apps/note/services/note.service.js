@@ -27,7 +27,7 @@ function query() {
 }
 
 function getNote(noteId) {
-    return storageService.query(NOTE_KEY, noteId)
+    return storageService.get(NOTE_KEY, noteId)
 }
 
 function removeNote(noteId) {

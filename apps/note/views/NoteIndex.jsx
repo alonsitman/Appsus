@@ -79,6 +79,17 @@ export function NoteIndex() {
         }
     }
 
+    function onChangeColor(noteToModify) {
+        console.log('note iam here', noteToModify.id)
+    
+        noteService.getNote(noteToModify.id)
+        .then((note)=>{
+            console.log('got note',note)
+            const modifyNote = {...note, style : {...note.style, ['backgroundColor'] : colorPicker}}
+            onSaveNote(modifyNote)
+        })
+    }
+    
 
     function onSaveNote(newNote) {
         console.log('Enter onSaveNote!!!!!!!!!!!!!!!!!! ', newNote)
@@ -136,7 +147,7 @@ export function NoteIndex() {
         onSaveNote(currentEditedNoteValues)
     }
 
-    
+
 
 
     console.log('is created not empty string', isCreatedNoteEmpty)
@@ -154,7 +165,7 @@ export function NoteIndex() {
             isNoteJustAdded={isNoteJustAdded}
         />
         <NoteList notes={notes} onRemoveNote={onRemoveNote} onContentNoteClick={onContentNoteClick}
-            animate={!noteContentClicked} setColorPicker={setColorPicker} />
+            animate={!noteContentClicked} setColorPicker={setColorPicker} onChangeColor={onChangeColor} />
         {noteContentClicked &&
             <div>
                 <div className="overlay"></div>

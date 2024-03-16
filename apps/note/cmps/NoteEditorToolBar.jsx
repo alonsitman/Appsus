@@ -1,6 +1,7 @@
 
 export function NoteEditorToolBar({ currentEditedNoteValues, onRemoveNote, setNoteContentClicked }) {
     
+    
     function handleRemoveClick(){
         onRemoveNote(currentEditedNoteValues.id)
         setNoteContentClicked(false)
