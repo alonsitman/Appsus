@@ -23,6 +23,7 @@
 @import './apps/note/cmps/NoteCreator.css';
 @import './apps/note/cmps/NoteCreatorToolBar.css';
 @import './apps/note/cmps/NoteCreatorPreview.css';
+@import './apps/note/cmps/ColorPlate.css';
 
 /* Cmps */
 
