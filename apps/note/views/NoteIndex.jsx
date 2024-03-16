@@ -3,7 +3,7 @@ import { noteService } from "../services/note.service.js"
 import { NoteList } from "../cmps/NoteList.jsx"
 import { NoteEditor } from "../cmps/NoteEditor.jsx"
 import { NoteCreator } from "../cmps/NoteCreator.jsx"
-import { showSuccessMsg, showErrorMsg } from "../../../services/event-bus.service.js"
+import { NoteFilterBar } from "../cmps/NoteFilterBar.jsx"
 import { utilService } from "../../../services/util.service.js"
 
 export function NoteIndex() {
@@ -169,6 +169,7 @@ export function NoteIndex() {
 
     if (!notes) return <React.Fragment>loading...</React.Fragment>
     return <section className="note-index">
+        <NoteFilterBar/>
         <NoteCreator
             creatorRef={creatorRef}
             handleCreatorChange={handleCreatorChange}
