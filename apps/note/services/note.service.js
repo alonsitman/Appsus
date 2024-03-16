@@ -13,6 +13,7 @@ export const noteService = {
     removeNote,
     saveNote,
     getEmptyNote,
+    getColorPicker,
     // getDefaultFilter
 }
 
@@ -80,5 +81,9 @@ function _createNotes() {
     utilService.saveToStorage(NOTE_KEY, notes)
 }
 
+
+function getColorPicker() {
+    return colorPicker
+}
 
 
