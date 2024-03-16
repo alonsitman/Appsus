@@ -80,13 +80,16 @@ export function NoteIndex() {
     }
 
     function onChangeColor(noteToModify, color) {
-        console.log('note iam here', noteToModify.id)
-        noteService.getNote(noteToModify.id)
-        .then((note)=>{
-            console.log('got note',note)
-            const modifyNote = {...note, style : {...note.style, ['backgroundColor'] : color}}
-            onSaveNote(modifyNote)
-        })
+        console.log('Note to modify', noteToModify)
+        console.log('Current to modify',currentEditedNoteValues)
+        setTimeout(()=>{
+            noteService.getNote(noteToModify.id)
+            .then((note)=>{
+                console.log('got note',note)
+                const modifyNote = {...note, style : {...note.style, ['backgroundColor'] : color}}
+                onSaveNote(modifyNote)
+            })
+        },300)
     }
     
 
@@ -175,6 +178,7 @@ export function NoteIndex() {
                     handleEditorChange={handleEditorChange}
                     onRemoveNote={onRemoveNote}
                     setNoteContentClicked={setNoteContentClicked}
+                    onChangeColor={onChangeColor}
                 />
             </div>
         }

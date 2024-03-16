@@ -1,6 +1,6 @@
 import { NoteEditorToolBar } from "./NoteEditorToolBar.jsx"
 
-export function NoteEditor({ editorRef, noteContentClicked, currentEditedNoteValues, handleEditorChange, onRemoveNote, setNoteContentClicked }) {
+export function NoteEditor({ editorRef, noteContentClicked, currentEditedNoteValues, handleEditorChange, onRemoveNote, setNoteContentClicked, onChangeColor }) {
 
 
     const formStyle = {
@@ -28,7 +28,7 @@ export function NoteEditor({ editorRef, noteContentClicked, currentEditedNoteVal
                 />
             </form>
             <section className="footer">
-                <NoteEditorToolBar currentEditedNoteValues={currentEditedNoteValues} onRemoveNote={onRemoveNote} setNoteContentClicked ={setNoteContentClicked} />
+                <NoteEditorToolBar currentEditedNoteValues={currentEditedNoteValues} onRemoveNote={onRemoveNote} setNoteContentClicked ={setNoteContentClicked} onChangeColor={onChangeColor} />
             </section>
             <button className="btn pin-note-btn fa-solid fa-thumbtack"></button>
 
