@@ -1,33 +1,30 @@
 const { useState, useEffect, useRef } = React
 
 
-export function MailFilter({mails, filterBy, onFilterChange}) {
-    const [activeFilter, setActiveFilter] = useState(filterBy.status)
-    const unreadMails = mails.filter(mail => !mail.isRead)
-    const unreadCount = unreadMails.length
+export function MailFilter({unreadCount, filterBy, onFilterChange}) {
+    // const [activeFilter, setActiveFilter] = useState(filterBy[0].status)  
+    const [activeFilter, setActiveFilter] = useState(filterBy)  
 
-    const prevFilterStatus = useRef(filterBy.status)
+
+    // const prevFilterStatus = useRef(filterBy.status)
+    // useEffect(() => {
+    //     prevFilterStatus.current = filterBy.status
+    // }, [filterBy.status])
     useEffect(() => {
-        prevFilterStatus.current = filterBy.status
-    }, [filterBy.status])
+		onFilterChange(activeFilter)
+	}, [activeFilter])
 
     function handleFilterClick(filter) {
         setActiveFilter(filter)
-        const updatedFilterBy = { ...filterBy }
-        updatedFilterBy.status = filter
-        onFilterChange(updatedFilterBy)
+        console.log('filter clicked:', filter)
+        console.log('activeFilter:', activeFilter)
+        // const updatedFilterBy = { ...filterBy }
+        // updatedFilterBy.status = filter
+        // console.log('updatedfilter:', updatedFilterBy.status)
+        // onFilterChange(updatedFilterBy)
+        onFilterChange(activeFilter)
     }
     
-    // const handleFilterClick = (filter) => {
-    //     // setActiveFilter(filter)
-    //     // onFilterChange(filter)
-    //     const updatedFilterBy = { ...filterBy }
-    //     updatedFilterBy.status = filter
-    //     onFilterChange(updatedFilterBy)
-    //     setActiveFilter(filter)
-    //     console.log('updatedFilterBy:', updatedFilterBy)
-    //     console.log('activeFilter:', activeFilter)
-    // }
 
     return <section className="mail-filter">
         <ul>

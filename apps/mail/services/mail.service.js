@@ -9,14 +9,14 @@ const loggedinUser = {
 
 const filterBy = {
     status: 'inbox',
-    txt: '',
-    isRead: false,
-    isStarred: false,
-    isSnoozed: false,
-    // isSent: false,
+    // txt: '',
+    // isRead: false,
+    isStarred: true,
+    // isSnoozed: false,
+    // isSent: true,
     // isTrash: false,
     // isDraft: false,
-    lables: ['important', 'romantic'] // has any of the labels
+    // lables: ['important', 'romantic'] // has any of the labels
 }
 
 //For debug ONLY
@@ -37,17 +37,18 @@ window.cs = mailService
 function query(filterBy) {
     return storageService.query(MAIL_KEY)
         .then(mails => {
-            if (!filterBy) return mails
+            if (!filterBy) {
+                return mails
+            }
             return mails.filter(mail => {
-                if (mail.status !== filterBy.status) return false
-                if (filterBy.status === 'starred' && !mail.isStarred) return false
+                // if (mail.status !== filterBy.status) return false
+                // if (filterBy.status === 'starred' && !mail.isStarred) return false
                 // if (filterBy.isRead && mail.isRead !== filterBy.isRead) return false
-                if (filterBy.isStarred && mail.isStarred !== filterBy.isStarred) return false
-                if (filterBy.isSnoozed && mail.isSnoozed !== filterBy.isSnoozed) return false
-                if (filterBy.isSent && mail.isSent !== filterBy.isSent) return false
-                if (filterBy.isTrash && mail.isTrash !== filterBy.isTrash) return false
-                if (filterBy.isDraft && mail.isDraft !== filterBy.isDraft) return false
-
+                if (filterBy[0].isStarred && mail.isStarred) return false
+                // if (filterBy.isSnoozed && mail.isSnoozed !== filterBy.isSnoozed) return false
+                // if (filterBy.isSent && mail.isSent !== filterBy.isSent) return false
+                // if (filterBy.isTrash && mail.isTrash !== filterBy.isTrash) return false
+                // if (filterBy.isDraft && mail.isDraft !== filterBy.isDraft) return false
                 return true
             })
         })

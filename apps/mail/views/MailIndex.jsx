@@ -1,4 +1,5 @@
 const { useState, useEffect } = React
+// const { Link, useSearchParams } = ReactRouterDOM
 
 import { MailList } from "../cmps/MailList.jsx"
 import { MailFilter } from "../cmps/MailFilter.jsx"
@@ -11,8 +12,11 @@ import { mailService } from "../services/mail.service.js"
 export function MailIndex() {
     const [filterBy, setFilterBy] = useState(useState(mailService.getDefaultFilter()))
     const [mails, setMails] = useState([])
+    const unreadMails = mails.filter(mail => !mail.isRead)
+    const unreadCount = unreadMails.length
     
     useEffect(() => {
+        // setSearchParams(filterBy)
         loadMails()
     }, [filterBy])
 
@@ -21,12 +25,15 @@ export function MailIndex() {
             .then((mails) => {
                 setMails(mails)
                 // console.log('filterBy:', filterBy)
+                // console.log('and the mails:', mails)
             })
     }
 
     function onFilterChange(newFilterBy) {
         setFilterBy(newFilterBy)
-        console.log('filterBy:', filterBy)
+        // setFilterBy(prevFilter => ({ ...prevFilter, ...fieldsToUpdate }))
+        console.log('newFilterBy:', newFilterBy)
+        console.log('onfilterchange filterBy:', filterBy)
     }
 
     function onRemoveMail(mailId) {
@@ -37,7 +44,7 @@ export function MailIndex() {
                 setMails((prevMails) => prevMails.filter(mail => mail.id !== mailId))
             })
             .catch((err) => {
-                console.log('had issues removing mail', err)
+                console.log('had problems removing mail', err)
             })
     }
 
@@ -45,19 +52,16 @@ export function MailIndex() {
     if (!mails) return <div>Loading...</div>
     return <section className="mail-index">
         <MailCompose />
+        
         <MailFilter 
-            mails={mails}
             filterBy={filterBy}
+            unreadCount={unreadCount}
             onFilterChange={onFilterChange}
         />       
         <MailList
             mails={mails}
-            // mails={filterMails}
-            // filterBy={filterBy}
             onRemoveMail={onRemoveMail}
         />
-
-     
     </section>
 }
 
